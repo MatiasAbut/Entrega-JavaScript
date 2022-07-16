@@ -70,47 +70,47 @@ function sumaIva (precio){
 
 for (let i = 0; i < cantidad; i++) {
 
-let compra = prompt("Ingrese el nombre del producto que quiere comprar:  \n- Caramelos 🍬 \n- Chupetines 🍭 \n -Galletitas 🍪 \n -Chocolates 🍫 \n -Gomitas 🍡 \n -Bombones 🌰 \n -Snacks 🥜 \n -Alfajores 🍩 \n -Barritas 🥖 \n -Chicles 🍬")
+let compra = prompt("Ingrese el nombre del producto que quiere comprar:  \n- Caramelos 🍬 \n- Chupetines 🍭 \n -Galletitas 🍪 \n -Chocolates 🍫 \n -Gomitas 🍡 \n -Bombones 🌰 \n -Snacks 🥜 \n -Alfajores 🍩 \n -Barritas 🥖 \n -Chicles 🍬").toLowerCase()
 
 let cantidad1 = prompt("Ingrese la cantidad del producto que quiere comprar:")
 
-if(compra == "Caramelos"){
+if(compra == "Caramelos".toLowerCase()){
     calculoStock(cantidad1, stockProductoA, precioProductoA)
     alert ("Selecciono " + cantidad1 + " " + compra)
 }
-else if(compra == "Chupetines"){
+else if(compra == "Chupetines".toLowerCase()){
     calculoStock(cantidad1, stockProductoB, precioProductoB)
     alert ("Selecciono " + cantidad1 + " " + compra)
 }
-else if(compra == "Galletitas"){
+else if(compra == "Galletitas".toLowerCase()){
     calculoStock(cantidad1, stockProductoC, precioProductoC)
     alert ("Selecciono " + cantidad1 + " " + compra)
 }
-else if(compra == "Chocolates"){
+else if(compra == "Chocolates".toLowerCase()){
     calculoStock(cantidad1, stockProductoD, precioProductoD)
     alert ("Selecciono " + cantidad1 + " " + compra)
 }
-else if(compra == "Gomitas"){
+else if(compra == "Gomitas".toLowerCase()){
     calculoStock(cantidad1, stockProductoE, precioProductoE)
     alert ("Selecciono " + cantidad1 + " " + compra)
 }
-else if(compra == "Bombones"){
+else if(compra == "Bombones".toLowerCase()){
     calculoStock(cantidad1, stockProductoF, precioProductoF)
     alert ("Selecciono " + cantidad1 + " " + compra)
 }
-else if(compra == "Snacks"){
+else if(compra == "Snacks".toLowerCase()){
     calculoStock(cantidad1, stockProductoG, precioProductoG)
     alert ("Selecciono " + cantidad1 + " " + compra)
 }
-else if(compra == "Alfajores"){
+else if(compra == "Alfajores".toLowerCase()){
     calculoStock(cantidad1, stockProductoH, precioProductoH)
     alert ("Selecciono " + cantidad1 + " " + compra)
 }
-else if(compra == "Barritas"){
+else if(compra == "Barritas".toLowerCase()){
     calculoStock(cantidad1, stockProductoI, precioProductoI)
     alert ("Selecciono " + cantidad1 + " " + compra)
 }
-else if(compra == "Chicles"){
+else if(compra == "Chicles".toLowerCase()){
     calculoStock(cantidad1, stockProductoJ, precioProductoJ)
     alert ("Selecciono " + cantidad1 + " " + compra)
 }
