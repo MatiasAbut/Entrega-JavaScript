@@ -40,7 +40,7 @@ let stockProductoJ = 100;
 
 alert("Bienvenido a La Carameleria! 😁")
 
-let cantidad = parseint = (prompt ("Ingrese la cantidad de productos distintos que quiere comprar: \n- Caramelos 🍬 \n- Chupetines 🍭 \n -Galletitas 🍪 \n -Chocolates 🍫 \n -Gomitas 🍡 \n -Bombones 🌰 \n -Snacks 🥜 \n -Alfajores 🍩 \n -Barritas 🥖 \n -Chicles 🍬"))
+let cantidad = parseint = (prompt ("Ingrese la cantidad de productos distintos que quiere comprar:"))
 
     if (cantidad <= 0 ){
         alert ("No ingresaste ninguna cantidad, porfavor ingrese la cantidad.")
@@ -74,48 +74,50 @@ let compra = prompt("Ingrese el nombre del producto que quiere comprar:  \n- Car
 
 let cantidad1 = prompt("Ingrese la cantidad del producto que quiere comprar:")
 
-if(compra == "Caramelos".toLowerCase()){
+switch (compra) {
+    case "Caramelos".toLowerCase(): 
     calculoStock(cantidad1, stockProductoA, precioProductoA)
     alert ("Selecciono " + cantidad1 + " " + compra)
-}
-else if(compra == "Chupetines".toLowerCase()){
+    break;
+    case "Chupetines".toLowerCase(): 
     calculoStock(cantidad1, stockProductoB, precioProductoB)
     alert ("Selecciono " + cantidad1 + " " + compra)
-}
-else if(compra == "Galletitas".toLowerCase()){
-    calculoStock(cantidad1, stockProductoC, precioProductoC)
+    break;
+    case "Galletitas".toLowerCase(): 
+    calculoStock(cantidad1, stockProductoB, precioProductoC)
     alert ("Selecciono " + cantidad1 + " " + compra)
-}
-else if(compra == "Chocolates".toLowerCase()){
-    calculoStock(cantidad1, stockProductoD, precioProductoD)
+    break;
+    case "Chocolates".toLowerCase(): 
+    calculoStock(cantidad1, stockProductoC, precioProductoD)
     alert ("Selecciono " + cantidad1 + " " + compra)
-}
-else if(compra == "Gomitas".toLowerCase()){
+    break;
+    case "Gomitas".toLowerCase(): 
     calculoStock(cantidad1, stockProductoE, precioProductoE)
     alert ("Selecciono " + cantidad1 + " " + compra)
-}
-else if(compra == "Bombones".toLowerCase()){
+    break;
+    case "Bombones".toLowerCase(): 
     calculoStock(cantidad1, stockProductoF, precioProductoF)
     alert ("Selecciono " + cantidad1 + " " + compra)
-}
-else if(compra == "Snacks".toLowerCase()){
+    break;
+    case "Snacks".toLowerCase(): 
     calculoStock(cantidad1, stockProductoG, precioProductoG)
     alert ("Selecciono " + cantidad1 + " " + compra)
-}
-else if(compra == "Alfajores".toLowerCase()){
+    break;
+    case "Alfajores".toLowerCase(): 
     calculoStock(cantidad1, stockProductoH, precioProductoH)
     alert ("Selecciono " + cantidad1 + " " + compra)
-}
-else if(compra == "Barritas".toLowerCase()){
+    break;
+    case "Barritas".toLowerCase(): 
     calculoStock(cantidad1, stockProductoI, precioProductoI)
     alert ("Selecciono " + cantidad1 + " " + compra)
-}
-else if(compra == "Chicles".toLowerCase()){
+    break;
+    case "Chicles".toLowerCase(): 
     calculoStock(cantidad1, stockProductoJ, precioProductoJ)
     alert ("Selecciono " + cantidad1 + " " + compra)
-}
-else{
-    alert("No tenemos ese producto")
+    break;
+    default:
+        alert("No tenemos ese producto")
+    break;
 }
 }
 
@@ -147,8 +149,5 @@ let precioTotalConImpuestos = sumaIva(precioTotal)
 alert("Precio total con impuestos es: " + precioTotalConImpuestos)
 
 alert("Gracias por su compra! Vuelva pronto!")
-
-
-
 
 
