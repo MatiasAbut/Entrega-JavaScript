@@ -40,11 +40,11 @@ let stockProductoJ = 100;
 
 alert("Bienvenido a La Carameleria! 😁")
 
-let cantidad = parseint = (prompt ("Ingrese la cantidad de productos distintos que quiere comprar: \n- Caramelos 🍬 \n- Chupetines 🍭 \n -Galletitas 🍪 \n -Chocolates 🍫 \n -Gomitas 🍡 \n -Bombones 🌰 \n -Snacks 🥜 \n -Alfajores 🍩 \n -Barritas 🥖 \n -Chicles 🍬"))
-
+let cantidad = parseInt(prompt ("Ingrese la cantidad de productos distintos que quiere comprar: \n- Caramelos 🍬 \n- Chupetines 🍭 \n -Galletitas 🍪 \n -Chocolates 🍫 \n -Gomitas 🍡 \n -Bombones 🌰 \n -Snacks 🥜 \n -Alfajores 🍩 \n -Barritas 🥖 \n -Chicles 🍬"))
+//no es necesario mostrar en este pedido los productos
     if (cantidad <= 0 ){
         alert ("No ingresaste ninguna cantidad, porfavor ingrese la cantidad.")
-    }
+    } //y si ingresa letras?
 
 let precioTotal = 0;
 
@@ -74,7 +74,8 @@ let compra = prompt("Ingrese el nombre del producto que quiere comprar:  \n- Car
 
 let cantidad1 = prompt("Ingrese la cantidad del producto que quiere comprar:")
 
-if(compra == "Caramelos".toLowerCase()){
+//cuando hay tantas condiciones es mejor un switch: pero además: TODAS LAS CONDICIONES REALIZAN LA MISMA OPERACIÓN, por lo que deberías haber usado funciones ahí adentro
+if(compra == "Caramelos".toLowerCase()){ //el metodo hay que ponerlo de ambos lados (compra es lo que ingresa el usuario y puede ser cualquier cosa)
     calculoStock(cantidad1, stockProductoA, precioProductoA)
     alert ("Selecciono " + cantidad1 + " " + compra)
 }
