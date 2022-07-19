@@ -44,7 +44,7 @@ let cantidad = parseint = (prompt ("Ingrese la cantidad de productos distintos q
 
     if (cantidad <= 0 ){
         alert ("No ingresaste ninguna cantidad, porfavor ingrese la cantidad.")
-    }
+    } 
 
 let precioTotal = 0;
 
