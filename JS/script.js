@@ -35,7 +35,7 @@ alert("Bienvenido a La Carameleria! 😁")
 
 let cantidad = parseint = (prompt ("Ingrese la cantidad de productos distintos que quiere comprar:"))
 
-    if (cantidad <= 0 ){
+    if (isNaN(cantidad) || cantidad <= 0) {
         alert ("No ingresaste ninguna cantidad, porfavor ingrese la cantidad.")
     } 
 
