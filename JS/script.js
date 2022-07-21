@@ -68,7 +68,7 @@ let cantidad1 = prompt("Ingrese la cantidad del producto que quiere comprar:")
 switch (compra) {
     case "Caramelos".toLowerCase(): 
     calculoStock(cantidad1, productoA)
-    alert ("Selecciono " + cantidad1 + " " + compra)
+    alert ("Selecciono " + cantidad1 + " " + compra) //fijate como meter esta alerta en la funcion calculoStock para ahorrar codigo
     break;
     case "Chupetines".toLowerCase(): 
     calculoStock(cantidad1, productoB)
@@ -112,11 +112,22 @@ switch (compra) {
 }
 }
 
+//tenés muuucho codigo repetido y para eso se emplean las funciones
+//a modo de ejemplo
+
+function descuento(porcentaje) { //porcentaje es un numero del 0 al 100
+    precioTotal = precioTotal * (100-porcentaje)/100
+    //acá podrias calcular el iva directamente
+    alert("Recibiste un descuento del "+porcentaje+"% por tu compra")
+    alert("Gracias por su compra! Vuelva pronto!")
+}
+
 switch (true){
     case precioTotal <= 200 && precioTotal >= 100:
-        precioTotal = precioTotal * 0.95
-        alert("Recibiste un descuento del 5% por tu compra")
-        alert("Gracias por su compra! Vuelva pronto!")
+        //precioTotal = precioTotal * 0.95
+        //alert("Recibiste un descuento del 5% por tu compra")
+        //alert("Gracias por su compra! Vuelva pronto!")
+        descuento(5)
         break;
     case precioTotal <= 500 && precioTotal > 200:
         precioTotal = precioTotal * 0.85
@@ -140,9 +151,12 @@ switch (true){
         break;
 }
 
-// let precioTotalConImpuestos = sumaIva(precioTotal)
+//utilizar un condicional: si precioTotal > 0 que recien ahí saque el iva y tire la alerta
+//ya que si me equivoco y escribo cualquier cosa que no sea un numero me salta esta alerta y no es correcto
 
-alert("Precio total con impuestos es: " + precioTotalConImpuestos)
+//let precioTotalConImpuestos = sumaIva(precioTotal) //esta linea estaba comentada
+//esta alerta da error en la consola, hay que corregirla o comentarla
+//alert("Precio total con impuestos es: " + precioTotalConImpuestos)
 
 
 
