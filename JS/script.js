@@ -47,10 +47,13 @@ function calculoPrecio(cantidad, precio) {
     precioTotal += cantidad * precio;
 }
 
+
 function calculoStock(cantidad, producto){
+    
         if(producto.stock >= cantidad){
             calculoPrecio(cantidad, producto.precio)
             alert("El producto total es de: $" + (cantidad * producto.precio))
+            alert ("Selecciono " + cantidad + " " + producto.nombre)
         }
         else{
             alert("No disponemos de esa cantidad en stock. Nuestro stock actual es de: " + producto.stock + " unidades")
@@ -62,87 +65,80 @@ function calculoStock(cantidad, producto){
 for (let i = 0; i < cantidad; i++) {
 
 let compra = prompt("Ingrese el nombre del producto que quiere comprar: \n" + nombresProductos.join("\n")).toLowerCase()
-
 let cantidad1 = prompt("Ingrese la cantidad del producto que quiere comprar:")
 
-switch (compra) {
-    case "Caramelos".toLowerCase(): 
-    calculoStock(cantidad1, productoA)
-    alert ("Selecciono " + cantidad1 + " " + compra) //fijate como meter esta alerta en la funcion calculoStock para ahorrar codigo
-    break;
-    case "Chupetines".toLowerCase(): 
-    calculoStock(cantidad1, productoB)
-    alert ("Selecciono " + cantidad1 + " " + compra)
-    break;
-    case "Galletitas".toLowerCase(): 
-    calculoStock(cantidad1, productoC)
-    alert ("Selecciono " + cantidad1 + " " + compra)
-    break;
-    case "Chocolates".toLowerCase(): 
-    calculoStock(cantidad1, productoD)
-    alert ("Selecciono " + cantidad1 + " " + compra)
-    break;
-    case "Gomitas".toLowerCase(): 
-    calculoStock(cantidad1, productoE)
-    alert ("Selecciono " + cantidad1 + " " + compra)
-    break;
-    case "Bombones".toLowerCase(): 
-    calculoStock(cantidad1, productoF)
-    alert ("Selecciono " + cantidad1 + " " + compra)
-    break;
-    case "Snacks".toLowerCase(): 
-    calculoStock(cantidad1, productoG)
-    alert ("Selecciono " + cantidad1 + " " + compra)
-    break;
-    case "Alfajores".toLowerCase(): 
-    calculoStock(cantidad1, productoH)
-    alert ("Selecciono " + cantidad1 + " " + compra)
-    break;
-    case "Barritas".toLowerCase(): 
-    calculoStock(cantidad1, productoI)
-    alert ("Selecciono " + cantidad1 + " " + compra)
-    break;
-    case "Chicles".toLowerCase(): 
-    calculoStock(cantidad1, productoJ)
-    alert ("Selecciono " + cantidad1 + " " + compra)
-    break;
-    default:
-        alert("No tenemos ese producto")
-    break;
-}
+
+ switch (compra) {
+     case "Caramelos".toLowerCase(): 
+     calculoStock(cantidad1, productoA)
+     break;
+     case "Chupetines".toLowerCase(): 
+     calculoStock(cantidad1, productoB)
+     break;
+     case "Galletitas".toLowerCase(): 
+     calculoStock(cantidad1, productoC)
+     break;
+     case "Chocolates".toLowerCase(): 
+     calculoStock(cantidad1, productoD)
+     break;
+     case "Gomitas".toLowerCase(): 
+     calculoStock(cantidad1, productoE)
+     break;
+     case "Bombones".toLowerCase(): 
+     calculoStock(cantidad1, productoF)
+     break;
+     case "Snacks".toLowerCase(): 
+     calculoStock(cantidad1, productoG)
+     break;
+     case "Alfajores".toLowerCase(): 
+     calculoStock(cantidad1, productoH)
+     break;
+     case "Barritas".toLowerCase(): 
+     calculoStock(cantidad1, productoI)
+     break;
+     case "Chicles".toLowerCase(): 
+     calculoStock(cantidad1, productoJ)
+     break;
+     default:
+         alert("No tenemos ese producto")
+     break;
+ }
+
+//ESTA FUNCION DE ABAJO LA CREE PARA DISMINUIR LA CANTIDAD DE CODIGO DE ARRIBA PERO NO LOGRO QUE FUNCIONE.
+
+// function selectorCompra(producto, cantidad1, compra){
+//     if (compra = producto.nombre.toLowerCase()){
+//         calculoStock(cantidad1, productoA)
+//     }
+//     else{
+//         alert("No tenemos ese producto")
+//     }
+//     }
+
+
 }
 
-//tenés muuucho codigo repetido y para eso se emplean las funciones
-//a modo de ejemplo
 
 function descuento(porcentaje) { //porcentaje es un numero del 0 al 100
     precioTotal = precioTotal * (100-porcentaje)/100
-    //acá podrias calcular el iva directamente
     alert("Recibiste un descuento del "+porcentaje+"% por tu compra")
     alert("Gracias por su compra! Vuelva pronto!")
 }
 
+
+if(precioTotal > 0){
 switch (true){
     case precioTotal <= 200 && precioTotal >= 100:
-        //precioTotal = precioTotal * 0.95
-        //alert("Recibiste un descuento del 5% por tu compra")
-        //alert("Gracias por su compra! Vuelva pronto!")
         descuento(5)
         break;
     case precioTotal <= 500 && precioTotal > 200:
-        precioTotal = precioTotal * 0.85
-        alert("Recibiste un descuento del 15% por tu compra")
-        alert("Gracias por su compra! Vuelva pronto!")
+        descuento(15)
         break;
     case precioTotal <= 700 && precioTotal > 500:
-        precioTotal = precioTotal * 0.75
-        alert("Recibiste un descuento del 25% por tu compra")
-        alert("Gracias por su compra! Vuelva pronto!")
+        descuento(25)
         break;
     case precioTotal > 700:
-        precioTotal = precioTotal * 0.50
-        alert("Recibiste un descuento del 50% por tu compra")
-        alert("Gracias por su compra! Vuelva pronto!")
+        descuento(50)
         break;
     default:
         console.log(precioTotal)
@@ -150,13 +146,8 @@ switch (true){
         alert("Gracias por su compra! Vuelva pronto!")
         break;
 }
+}
 
-//utilizar un condicional: si precioTotal > 0 que recien ahí saque el iva y tire la alerta
-//ya que si me equivoco y escribo cualquier cosa que no sea un numero me salta esta alerta y no es correcto
-
-//let precioTotalConImpuestos = sumaIva(precioTotal) //esta linea estaba comentada
-//esta alerta da error en la consola, hay que corregirla o comentarla
-//alert("Precio total con impuestos es: " + precioTotalConImpuestos)
 
 
 
