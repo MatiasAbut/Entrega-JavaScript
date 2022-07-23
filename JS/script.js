@@ -21,15 +21,15 @@ const productoJ = new Producto("Chicles", 10, 100)
 
 let listaProductos = [productoA, productoB, productoC, productoD, productoE, productoF, productoG, productoH, productoI, productoJ]
 
-let nombresProductos = []
+let nombresProductos = listaProductos.map((producto) => producto.nombre)
 
-function listaProductosS(){
-    for(const producto of listaProductos){
-        nombresProductos.push(producto.nombre)
-    }
-}
+// function listaProductosS(){
+//     for(const producto of listaProductos){
+//         nombresProductos.push(producto.nombre)
+//     }
+// }
 
-listaProductosS()
+// listaProductosS()
 
 alert("Bienvenido a La Carameleria! 😁")
 
