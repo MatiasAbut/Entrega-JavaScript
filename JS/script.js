@@ -48,7 +48,7 @@ function calculoPrecio(cantidad, precio) {
 }
 
 
-function calculoStock(cantidad, producto){
+function calculoStock(cantidad, producto){ //tenes que hacer un cambio acá en realidad
     
         if(producto.stock >= cantidad){
             calculoPrecio(cantidad, producto.precio)
@@ -60,15 +60,30 @@ function calculoStock(cantidad, producto){
         }
 }
 
-
+//te lo muestro acá
+function calculoDeStock(prod,cant){ //prod es el OBJETO que va a comprar y cant es la variable con la cantidad que luego ingresa
+    if(prod.stock >= cant){ //verifico stock
+        calculoPrecio(cant,prod.precio)
+        alert("El producto total es de: $" + (cant * prod.precio))
+        alert ("Selecciono " + cant + " " + prod.nombre)
+    }
+    else{
+        alert("No disponemos de esa cantidad en stock. Nuestro stock actual es de: " + prod.stock + " unidades")
+    }
+}
 
 for (let i = 0; i < cantidad; i++) {
+    let compra = prompt("Ingrese el nombre del producto que quiere comprar: \n" + nombresProductos.join("\n")).toLowerCase()
+    //verifico que ese producto existe comparando de la siguiente forma
+    for (let cadaProducto of listaProductos) { //para cada producto de tu lista
+        if (cadaProducto.nombre.toLowerCase()==compra) { //comparo si es igual al ingresado por el usuario y si existe
+            let cantidad = prompt("Ingrese la cantidad del producto que quiere comprar:") //recien ahi pregunto la cantidad
+            calculoDeStock(cadaProducto,cantidad) //y luego calculo stock pasando el OBJETO encontrado y la cantidad
+        }
+    }
+}
 
-let compra = prompt("Ingrese el nombre del producto que quiere comprar: \n" + nombresProductos.join("\n")).toLowerCase()
-let cantidad1 = prompt("Ingrese la cantidad del producto que quiere comprar:")
-
-
- switch (compra) {
+/*  switch (compra) {
      case "Caramelos".toLowerCase(): 
      calculoStock(cantidad1, productoA)
      break;
@@ -102,21 +117,18 @@ let cantidad1 = prompt("Ingrese la cantidad del producto que quiere comprar:")
      default:
          alert("No tenemos ese producto")
      break;
- }
+ } */
 
 //ESTA FUNCION DE ABAJO LA CREE PARA DISMINUIR LA CANTIDAD DE CODIGO DE ARRIBA PERO NO LOGRO QUE FUNCIONE.
 
-// function selectorCompra(producto, cantidad1, compra){
-//     if (compra = producto.nombre.toLowerCase()){
-//         calculoStock(cantidad1, productoA)
-//     }
-//     else{
-//         alert("No tenemos ese producto")
-//     }
-//     }
-
-
-}
+/* function selectorCompra(producto, cantidad1, compra){
+    if (compra = producto.nombre.toLowerCase()){
+        calculoStock(cantidad1, productoA)
+    }
+    else{
+        alert("No tenemos ese producto")
+    }
+} */
 
 
 function descuento(porcentaje) { //porcentaje es un numero del 0 al 100
