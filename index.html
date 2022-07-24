@@ -1,12 +1,440 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulador Interactivo</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Koulen&family=Lobster&display=swap" rel="stylesheet">
+  <!-- Bootstrap-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <!-- Css -->
+  <link rel="stylesheet" href="CSS/style.css">
+  <title>CandyShop</title>
 </head>
+
 <body>
-    <script src="JS/script.js"></script>
+  <header>
+    <nav class="navbar navbar-expand-lg barraNavegacion">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">CandyShop</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contacto.html">Contacto</a>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Buscar productos" aria-label="Search">
+            <button class="btn btn-outline-dark" type="submit">Buscar</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main class="div11">
+    <div class="filter">
+      <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#mobile-filter"
+        aria-expanded="false" aria-controls="mobile-filter">Filters<span class="fa fa-filter pl-1"></span></button>
+    </div>
+    <!-- Mobile Filter -->
+    <div id="mobile-filter">
+      <div>
+        <h6 class="p-1 border-bottom">Productos</h6>
+        <ul>
+          <li><a href="#">Caramelos</a></li>
+          <li><a href="#">Chupetines</a></li>
+          <li><a href="#">Galletitas</a></li>
+          <li><a href="#">Chocolates</a></li>
+          <li><a href="#">Gomitas</a></li>
+          <li><a href="#">Bombon</a></li>
+          <li><a href="#">Snacks</a></li>
+          <li><a href="#">Alfajores</a></li>
+          <li><a href="#">Barrita</a></li>
+          <li><a href="#">Chicles</a></li>
+        </ul>
+      </div>
+      <div>
+        <h6 class="p-1 border-bottom">Filtro</h6>
+        <p class="mb-2">Tipos</p>
+        <ul class="list-group">
+          <li class="list-group-item list-group-item-action mb-2 rounded">
+            <a href="#">
+              <span class="fa fa-circle pr-1" id="red"></span>Dulce
+            </a>
+          </li>
+          <li class="list-group-item list-group-item-action mb-2 rounded">
+            <a href="#">
+              <span class="fa fa-circle pr-1" id="teal"></span>Salado
+            </a>
+          </li>
+          <li class="list-group-item list-group-item-action mb-2 rounded">
+            <a href="#">
+              <span class="fa fa-circle pr-1" id="blue"></span>Dietetico
+            </a>
+          </li>
+          <li class="list-group-item list-group-item-action mb-2 rounded">
+            <a href="#">
+              <span class="fa fa-circle pr-1" id="red"></span>Celiacos
+            </a>
+          </li>
+          <li class="list-group-item list-group-item-action mb-2 rounded">
+            <a href="#">
+              <span class="fa fa-circle pr-1" id="teal"></span>Veggie
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h6>Tipos</h6>
+      </div>
+    </div>
+    <!-- Sidebar -->
+    <section id="sidebar">
+      <div>
+        <h6 class="p-1 border-bottom">Productos</h6>
+        <ul>
+          <li><a href="#">Caramelos</a></li>
+          <li><a href="#">Chupetines</a></li>
+          <li><a href="#">Galletitas</a></li>
+          <li><a href="#">Chocolates</a></li>
+          <li><a href="#">Gomitas</a></li>
+          <li><a href="#">Bombon</a></li>
+          <li><a href="#">Snacks</a></li>
+          <li><a href="#">Alfajores</a></li>
+          <li><a href="#">Barrita</a></li>
+          <li><a href="#">Chicles</a></li>
+        </ul>
+      </div>
+      <div>
+        <h6 class="p-1 border-bottom">Filtro</h6>
+        <p class="mb-2">Tipos</p>
+        <ul class="list-group">
+          <li class="list-group-item list-group-item-action mb-2 rounded"><a href="#">
+              <span class="fa fa-circle pr-1" id="red"></span>Dulce
+            </a></li>
+          <li class="list-group-item list-group-item-action mb-2 rounded"><a href="#">
+              <span class="fa fa-circle pr-1" id="teal"></span>Salado
+            </a></li>
+          <li class="list-group-item list-group-item-action mb-2 rounded"><a href="#">
+              <span class="fa fa-circle pr-1" id="blue"></span>Dietetico
+            </a></li>
+          <li class="list-group-item list-group-item-action mb-2 rounded"><a href="#">
+              <span class="fa fa-circle pr-1" id="red"></span>Celiacos
+            </a></li>
+          <li class="list-group-item list-group-item-action mb-2 rounded"><a href="#">
+              <span class="fa fa-circle pr-1" id="teal"></span>Veggie
+            </a></li>
+        </ul>
+      </div>
+      <div class="ui-search-filter-dl ">
+        <div role="heading" aria-level="3" class="ui-search-filter-dt-title p-1 border-bottom">Precio</div>
+        <ul>
+          <li class="ui-search-filter-container">
+            <a href="#" class="ui-search-link" rel="nofollow" aria-label="Hasta $ 200">
+              <span class="ui-search-filter-name">Hasta $ 200</span>
+            </a>
+          </li>
+          <li class="ui-search-filter-container">
+            <a href="#" class="ui-search-link" rel="nofollow" aria-label="$200 a $500">
+              <span class="ui-search-filter-name">$200 a $500</span>
+            </a>
+          </li>
+          <li class="ui-search-filter-container">
+            <a href="#" class="ui-search-link" rel="nofollow" aria-label="Más de $500">
+              <span class="ui-search-filter-name">Más de $500</span>
+            </a>
+          </li>
+          <br>
+          <li>
+            <form class="ui-search-price-filter ui-search-filter-range--price" method="post">
+              <div class="ui-search-price-filter-container">
+                <div class="andes-form-control andes-form-control--textfield andes-form-control--default">
+                  <div class="andes-form-control__control">
+                    <input data-testid="Minimum-price" name="Minimum" pattern="[0-9]*" enterkeyhint="go" rows="1"
+                      class="andes-form-control__field" maxlength="120" placeholder="Mínimo" value="">
+                  </div>
+                </div>
+              </div>
+              <br>
+              <div class="ui-search-price-filter-container">
+                <div class="andes-form-control andes-form-control--textfield andes-form-control--default">
+                  <div class="andes-form-control__control">
+                    <input data-testid="Maximum-price" name="Maximum" pattern="[0-9]*" enterkeyhint="go" rows="1"
+                      class="andes-form-control__field" maxlength="120" placeholder="Máximo" value="">
+                  </div>
+                </div>
+              </div>
+              <br>
+              <div class="ui-search-price-filter-container">
+                <button data-testid="submit-price" type="submit" class="ui-search-price-filter-action-btn" disabled=""
+                  aria-label="Aplicar">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="rgba(0, 0, 0, 0.9)">
+                    <path
+                      d="M8.27686 4.34644L7.42834 5.19496L12.224 9.99059L7.42334 14.7912L8.27187 15.6397L13.921 9.99059L8.27686 4.34644Z"
+                      fill="rgba(0, 0, 0, 0.9)">
+                    </path>
+                  </svg>
+                </button>
+              </div>
+            </form>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <!-- Productos -->
+    <section id="products">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-sm-4 col-11 offset-sm-0 offset-1">
+            <div class="card">
+              <img class="card-img-top" src="/Multimedia/red-candy.jpg" alt="Card image cap">
+              <div class="card-body">
+                <p class="card-text">Caramelos</p>
+                <p>$90</p>
+                <span class="fa fa-circle" id="red"></span>
+                <span class="fa fa-circle" id="teal"></span>
+                <span class="fa fa-circle" id="blue"></span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-4 col-11 offset-sm-2 offset-lg-0 offset-1">
+            <div class="card">
+              <img class="card-img-top" src="/Multimedia/lollipop.jpg" alt="Card image cap">
+              <div class="card-body">
+                <p class="card-text">Chupetines</p>
+                <p>$15</p>
+                <span class="fa fa-circle" id="red"></span>
+                <span class="fa fa-circle" id="teal"></span>
+                <span class="fa fa-circle" id="blue"></span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-4 col-11 offset-sm-0 offset-1">
+            <div class="card">
+              <img class="card-img-top" src="Multimedia/cookie.jpg" alt="Card image cap">
+              <div class="card-body">
+                <p class="card-text">Galletitas</p>
+                <p>$70</p>
+                <span class="fa fa-circle" id="red"></span>
+                <span class="fa fa-circle" id="teal"></span>
+                <span class="fa fa-circle" id="blue"></span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-4 col-11 offset-lg-0 offset-sm-2  offset-1">
+            <div class="card">
+              <img class="card-img-top" src="Multimedia/chocolate.jpg" alt="Card image cap">
+              <div class="card-body">
+                <p class="card-text">Chocolates</p>
+                <p>$100</p>
+                <span class="fa fa-circle" id="red"></span>
+                <span class="fa fa-circle" id="teal"></span>
+                <span class="fa fa-circle" id="blue"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-lg-3 col-sm-4 col-11 offset-sm-0 offset-1">
+            <div class="card">
+              <img class="card-img-top" src="Multimedia/gummy.jpg" alt="Card image cap">
+              <div class="card-body">
+                <p class="card-text">Gomitas</p>
+                <p>$2</p>
+                <span class="fa fa-circle" id="red"></span>
+                <span class="fa fa-circle" id="teal"></span>
+                <span class="fa fa-circle" id="blue"></span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-4 offset-lg-0 offset-sm-2 col-11 offset-1">
+            <div class="card">
+              <img class="card-img-top" src="Multimedia/bombon.jpg" alt="Card image cap">
+              <div class="card-body">
+                <p class="card-text">Bombones</p>
+                <p>$25</p>
+                <span class="fa fa-circle" id="red"></span>
+                <span class="fa fa-circle" id="teal"></span>
+                <span class="fa fa-circle" id="blue"></span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-4 col-11 offset-sm-0 offset-1">
+            <div class="card">
+              <img class="card-img-top" src="Multimedia/snacks.jpg" alt="Card image cap">
+              <div class="card-body">
+                <p class="card-text">Snacks</p>
+                <p>$120</p>
+                <span class="fa fa-circle" id="red"></span>
+                <span class="fa fa-circle" id="teal"></span>
+                <span class="fa fa-circle" id="blue"></span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-4 col-11 offset-sm-2 offset-lg-0 offset-1">
+            <div class="card">
+              <img class="card-img-top" src="Multimedia/alfajor.jpg" alt="Card image cap">
+              <div class="card-body">
+                <p class="card-text">Alfajores</p>
+                <p>$80</p>
+                <span class="fa fa-circle" id="red"></span>
+                <span class="fa fa-circle" id="teal"></span>
+                <span class="fa fa-circle" id="blue"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-lg-3 col-sm-4 col-11 offset-sm-0 offset-1">
+            <div class="card">
+              <img class="card-img-top" src="Multimedia/barrita.jpg" alt="Card image cap">
+              <div class="card-body">
+                <p class="card-text">Barritas</p>
+                <p>$150</p>
+                <span class="fa fa-circle" id="red"></span>
+                <span class="fa fa-circle" id="teal"></span>
+                <span class="fa fa-circle" id="blue"></span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-4 col-11 offset-sm-2 offset-lg-0 offset-1">
+            <div class="card">
+              <img class="card-img-top" src="Multimedia/chicles.jpg" alt="Card image cap">
+              <div class="card-body">
+                <p class="card-text">Chicles</p>
+                <p>$10</p>
+                <span class="fa fa-circle" id="red"></span>
+                <span class="fa fa-circle" id="teal"></span>
+                <span class="fa fa-circle" id="blue"></span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-4 col-11 offset-sm-0 offset-1">
+            <div class="card">
+              <img class="card-img-top" src="Multimedia/futurosproductos.jpg" alt="Card image cap">
+              <div class="card-body">
+                <p class="card-text">Futuros Productos</p>
+                <p>$???</p>
+                <span class="fa fa-circle" id="red"></span>
+                <span class="fa fa-circle" id="teal"></span>
+                <span class="fa fa-circle" id="blue"></span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-4 col-11 offset-sm-2 offset-lg-0 offset-1">
+            <div class="card">
+              <img class="card-img-top" src="Multimedia/futurosproductos.jpg" alt="Card image cap">
+              <div class="card-body">
+                <p class="card-text">Futuros Productos</p>
+                <p>$???</p>
+                <span class="fa fa-circle" id="red"></span>
+                <span class="fa fa-circle" id="teal"></span>
+                <span class="fa fa-circle" id="blue"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-lg-3 col-sm-4 col-11 offset-sm-0 offset-1">
+            <div class="card">
+              <img class="card-img-top" src="Multimedia/futurosproductos.jpg" alt="Card image cap">
+              <div class="card-body">
+                <p class="card-text">Futuros Productos</p>
+                <p>$???</p>
+                <span class="fa fa-circle" id="red"></span>
+                <span class="fa fa-circle" id="teal"></span>
+                <span class="fa fa-circle" id="blue"></span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-4 col-11 offset-sm-2  offset-lg-0 offset-1">
+            <div class="card">
+              <img class="card-img-top" src="Multimedia/futurosproductos.jpg" alt="Card image cap">
+              <div class="card-body">
+                <p class="card-text">Futuros Productos</p>
+                <p>$???</p>
+                <span class="fa fa-circle" id="red"></span>
+                <span class="fa fa-circle" id="teal"></span>
+                <span class="fa fa-circle" id="blue"></span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-4 col-11 offset-sm-0  offset-1">
+            <div class="card">
+              <img class="card-img-top" src="Multimedia/futurosproductos.jpg" alt="Card image cap">
+              <div class="card-body">
+                <p class="card-text">Futuros Productos</p>
+                <p>$???</p>
+                <span class="fa fa-circle" id="red"></span>
+                <span class="fa fa-circle" id="teal"></span>
+                <span class="fa fa-circle" id="blue"></span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-4 offset-lg-0 offset-sm-2 col-11 offset-1">
+            <div class="card">
+              <img class="card-img-top" src="Multimedia/futurosproductos.jpg" alt="Card image cap">
+              <div class="card-body">
+                <p class="card-text">Futuros Productos</p>
+                <p>$???</p>
+                <span class="fa fa-circle" id="red"></span>
+                <span class="fa fa-circle" id="teal"></span>
+                <span class="fa fa-circle" id="blue"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p class="">
+      Copyright &copy; 2022-2022 CandyShop. All rights reserved. Designed & developed by Matias Abut.
+    </p>
+    <br>
+
+    <ul class="">
+      <li>
+        <a href="https://wa.me/######" class="">
+          <img src="Multimedia/whatsapp-logo-11.png" alt="whatsapp logo" width="30" height="30">
+          Whatsapp
+        </a>
+      </li>
+      <br>
+      <li>
+        <a href="#" class="">
+          <img src="Multimedia/instagramlogo.png" alt="instagram logo" width="30" height="30">
+          Instagram
+        </a>
+      </li>
+      <br>
+      <li>
+        <a href="#" class="">
+          <img src="Multimedia/yotubelogo.png" alt="youtube logo" width="35" height="25">
+          Youtube
+        </a>
+      </li>
+  </footer>
+  <!-- Script Bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
+  </script>
+  <!-- Script JS -->
+  <script src="JS/script.js"></script>
+
 </body>
+
+
 </html>
