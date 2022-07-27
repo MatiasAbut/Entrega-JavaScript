@@ -1,7 +1,8 @@
- function Producto(nombre, precio, stock) {
+ function Producto(nombre, precio, stock, imagen) {
      this.nombre = nombre
      this.precio = precio
      this.stock = stock
+     this.imagen = imagen
      this.sumarIva = function (precio) {
          return precio * 0.21
      }
@@ -22,6 +23,74 @@
  const productoJ = new Producto("Chicles", 10, 100)
 
  let listaProductos = [productoA, productoB, productoC, productoD, productoE, productoF, productoG, productoH, productoI, productoJ]
+
+ for (const producto of listaProductos) {
+     if (producto.stock != 0) {
+
+         let card = document.createElement("div")
+         //Agregue esta parte de cards para agregar nombre, precio y stock (las imagenes todavia no se como agregarlas por eso todavia no lo hice) y queria saber que se le puede agregar para que no me haga el ciclo 4 veces sin que me haga una columna sola, es decir que cuando complete la fila baje el siguente producto a la fila de abajo. 
+         card.innerHTML = `
+    <section id="products">
+    <div class="container">
+      <div class="row mt-3">
+            <div class="col-lg-3 col-sm-4 col-11 offset-sm-0 offset-1">
+                <div class="card">
+                    <img class="card-img-top" src=${producto.imagen} alt="Card image cap">
+                        <div class="card-body">
+                            <p class="card-text">${producto.nombre}</p>
+                            <p>${producto.precio}</p>
+                            <p>${producto.stock}</p>
+                            <span class="fa fa-circle" id="red"></span>
+                            <span class="fa fa-circle" id="teal"></span>
+                            <span class="fa fa-circle" id="blue"></span>
+                        </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-4 col-11 offset-lg-0 offset-sm-2  offset-1">
+                <div class="card">
+                    <img class="card-img-top" src=${producto.imagen} alt="Card image cap">
+                        <div class="card-body">
+                            <p class="card-text">${producto.nombre}</p>
+                            <p>${producto.precio}</p>
+                            <p>${producto.stock}</p>
+                            <span class="fa fa-circle" id="red"></span>
+                            <span class="fa fa-circle" id="teal"></span>
+                            <span class="fa fa-circle" id="blue"></span>
+                        </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-4 col-11 offset-sm-0 offset-1">
+                <div class="card">
+                    <img class="card-img-top" src=${producto.imagen} alt="Card image cap">
+                        <div class="card-body">
+                            <p class="card-text">${producto.nombre}</p>
+                            <p>${producto.precio}</p>
+                            <p>${producto.stock}</p>
+                            <span class="fa fa-circle" id="red"></span>
+                            <span class="fa fa-circle" id="teal"></span>
+                            <span class="fa fa-circle" id="blue"></span>
+                        </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-4 col-11 offset-sm-2 offset-lg-0 offset-1">
+                <div class="card">
+                    <img class="card-img-top" src=${producto.imagen} alt="Card image cap">
+                        <div class="card-body">
+                            <p class="card-text">${producto.nombre}</p>
+                            <p>${producto.precio}</p>
+                            <p>${producto.stock}</p>
+                            <span class="fa fa-circle" id="red"></span>
+                            <span class="fa fa-circle" id="teal"></span>
+                            <span class="fa fa-circle" id="blue"></span>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>`
+
+         document.body.append(card)
+     }
+ }
 
  let nombresProductos = listaProductos.map((producto) => producto.nombre)
 
