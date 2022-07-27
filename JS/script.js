@@ -24,6 +24,16 @@
 
  let listaProductos = [productoA, productoB, productoC, productoD, productoE, productoF, productoG, productoH, productoI, productoJ]
 
+//algunas cosas para mejorar/corregir:
+//tu template HTML tiene que estar adentro de una funcion
+    //esta funcion va a depender de los parámetros correspondientes (imagen, nombre, precio, stock)
+//no definiste imagen en tu clase: AGREGALO PORFA! y rutea la correcta imagen para que efectivamente se vea la imagen
+ //ademas agrega una propiedad ID: es super importante en JS que cada cosa tenga un ID de referencia
+//por cada producto tenes que llamar a la funcion del template UNA VEZ!
+    //desconozco por que para cada producto de la lista lo hiciste 4 veces
+//borra los productos del HTML, se tienen que renderizar UNICAMENTE desde el JS
+
+
  for (const producto of listaProductos) {
      if (producto.stock != 0) {
 
