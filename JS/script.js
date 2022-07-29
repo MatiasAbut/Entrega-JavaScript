@@ -120,7 +120,7 @@
 
  let listaProductos = [productoA, productoB, productoC, productoD, productoE, productoF, productoG, productoH, productoI, productoJ, productoK, productoL, productoM, productoN, productoO, productoP, productoQ, productoR, productoS, productoT, productoU, productoV , productoW, productoX, productoY, productoZ, productoAA, productoAB, productoAC, productoAD, productoAE, productoAF, productoAG, productoAH, productoAI, productoAJ, productoAK, productoAL, productoAM, productoAN, productoAO, productoAP, productoAK, productoAR, productoAS, productoAT,productoAU, productoAV, productoAW, productoAX, productoAY, productoAZ, productoBA, productoBC, productoBD,productoBE, productoBF, productoBG, productoBH, productoBI, productoBJ, productoBK, productoBL, productoBM, productoBN,productoBO, productoBP, productoBK, productoBR, productoBS, productoBT, productoBU, productoBV, productoBW, productoBX,productoBY, productoBZ, productoCA, productoCB, productoCC, productoCD, productoCE, productoCF, productoCG, productoCH,productoCI, productoCJ, productoCK, productoCL, productoCM, productoCN, productoAG, productoCO, productoCP, productoCQ,productoCR, productoCS, productoCT, productoCU, productoCV, productoCW, productoCX, productoCY, productoCZ]
 
-//ahi lo acomode, pero me hace un columna sola y yo quiero que los productos esten en 4 columnas
+//Me hace un columna sola y yo quiero que los productos esten en 4 columnas
 let catalogoProductos = document.getElementById('catalogoProductos');
 
 function render(lista){
