@@ -120,7 +120,7 @@
 
  let listaProductos = [productoA, productoB, productoC, productoD, productoE, productoF, productoG, productoH, productoI, productoJ, productoK, productoL, productoM, productoN, productoO, productoP, productoQ, productoR, productoS, productoT, productoU, productoV , productoW, productoX, productoY, productoZ, productoAA, productoAB, productoAC, productoAD, productoAE, productoAF, productoAG, productoAH, productoAI, productoAJ, productoAK, productoAL, productoAM, productoAN, productoAO, productoAP, productoAK, productoAR, productoAS, productoAT,productoAU, productoAV, productoAW, productoAX, productoAY, productoAZ, productoBA, productoBC, productoBD,productoBE, productoBF, productoBG, productoBH, productoBI, productoBJ, productoBK, productoBL, productoBM, productoBN,productoBO, productoBP, productoBK, productoBR, productoBS, productoBT, productoBU, productoBV, productoBW, productoBX,productoBY, productoBZ, productoCA, productoCB, productoCC, productoCD, productoCE, productoCF, productoCG, productoCH,productoCI, productoCJ, productoCK, productoCL, productoCM, productoCN, productoAG, productoCO, productoCP, productoCQ,productoCR, productoCS, productoCT, productoCU, productoCV, productoCW, productoCX, productoCY, productoCZ]
 
-//Me hace un columna sola y yo quiero que los productos esten en 4 columnas
+//ME HACE UNA SOLA COLUMNA Y QUIERO QUE ALMENOS SEAN 3 PARA QUE ENTREN BIEN EN LA PAGINA
 let catalogoProductos = document.getElementById('catalogoProductos');
 
 function render(lista){
@@ -134,13 +134,14 @@ function render(lista){
             <section id="products">
             <div class="container">
               <div class="mercaderia">
-                    <div class="mercaderia-card">
-                        <div class="card" id="imagenProducto">
-                        <img class="card-img-top" src=${producto.image} alt="Card image cap">
+                    <div class="mercaderia-card ">
+                        <div class="card item" id="imagenProducto">
+                        <img class="card-img-top itemImage" src=${producto.image} alt="Card image cap">
                                 <div class="card-body">
-                                    <p class="card-text">${producto.nombre}</p>
-                                    <p>$${producto.precio}</p>
-                                    <p>${producto.stock}</p><button class="btn btn-primary" type="button">Agregar al Carrito</button>
+                                    <p class="card-text itemTitle">${producto.nombre}</p>
+                                    <p class="itemPrice">$${producto.precio}</p>
+                                    <p>${producto.stock}</p>
+                                    <button class="item-button btn btn-primary addToCart" type="button">Agregar al Carrito</button>
                                     <span class="fa fa-circle" id="red"></span>
                                     <span class="fa fa-circle" id="teal"></span>
                                     <span class="fa fa-circle" id="blue"></span>
@@ -154,10 +155,189 @@ function render(lista){
     }
 
     }
+
+//CARRITO DE COMPRAS
+// NO PUEDO HACERLO FUNCIONAR SI APLICO LOS FILTROS.
+const addToShoppingCartButtons = document.querySelectorAll('.addToCart');
+
+addToShoppingCartButtons.forEach((addToCartButton) => {
+  addToCartButton.addEventListener('click', addToCartClicked);
+});
+
+const comprarButton = document.querySelector('.comprarButton');
+
+comprarButton.addEventListener('click', (comprarButtonClicked));
+
+const shoppingCartItemsContainer = document.querySelector(
+  '.shoppingCartItemsContainer'
+);
+
+function addToCartClicked(event) {
+  const button = event.target;
+  const item = button.closest('.item');
+
+  const itemTitle = item.querySelector('.itemTitle').textContent;
+  const itemPrice = item.querySelector('.itemPrice').textContent;
+  const itemImage = item.querySelector('.itemImage').src;
+
+  addItemToShoppingCart(itemTitle, itemPrice, itemImage);
 }
 
-//Filtros y eventos
+function addItemToShoppingCart(itemTitle, itemPrice, itemImage) {
+  const elementsTitle = shoppingCartItemsContainer.getElementsByClassName(
+    'shoppingCartItemTitle'
+  );
+  for (let i = 0; i < elementsTitle.length; i++) {
+    if (elementsTitle[i].innerText === itemTitle) {
+      let elementQuantity = elementsTitle[
+        i
+      ].parentElement.parentElement.parentElement.querySelector(
+        '.shoppingCartItemQuantity'
+      );
+      elementQuantity.value++;
+      $('.toast').toast('show');
+      updateShoppingCartTotal();
+      return;
+    }
+  }
 
+  const shoppingCartRow = document.createElement('div');
+  const shoppingCartContent = `
+  <div class="row shoppingCartItem">
+        <div class="col-6">
+            <div class="shopping-cart-item d-flex align-items-center h-100 border-bottom pb-2 pt-3">
+                <img src=${itemImage} class="shopping-cart-image">
+                <h6 class="shopping-cart-item-title shoppingCartItemTitle text-truncate ml-3 mb-0">${itemTitle}</h6>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="shopping-cart-price d-flex align-items-center h-100 border-bottom pb-2 pt-3">
+                <p class="item-price mb-0 shoppingCartItemPrice">${itemPrice}</p>
+            </div>
+        </div>
+        <div class="col-4">
+            <div
+                class="shopping-cart-quantity d-flex justify-content-between align-items-center h-100 border-bottom pb-2 pt-3">
+                <input class="shopping-cart-quantity-input shoppingCartItemQuantity" type="number"
+                    value="1">
+                <button class="btn btn-danger buttonDelete" type="button">X</button>
+            </div>
+        </div>
+    </div>`;
+  shoppingCartRow.innerHTML = shoppingCartContent;
+  shoppingCartItemsContainer.append(shoppingCartRow);
+
+  shoppingCartRow
+    .querySelector('.buttonDelete')
+    .addEventListener('click', removeShoppingCartItem);
+
+  shoppingCartRow
+    .querySelector('.shoppingCartItemQuantity')
+    .addEventListener('change', quantityChanged);
+
+  updateShoppingCartTotal();
+}
+
+function updateShoppingCartTotal() {
+  let total = 0;
+  const shoppingCartTotal = document.querySelector('.shoppingCartTotal');
+
+  const shoppingCartItems = document.querySelectorAll('.shoppingCartItem');
+
+  shoppingCartItems.forEach((shoppingCartItem) => {
+    const shoppingCartItemPriceElement = shoppingCartItem.querySelector(
+      '.shoppingCartItemPrice'
+    );
+    const shoppingCartItemPrice = Number(
+      shoppingCartItemPriceElement.textContent.replace('$', '')
+    );
+    const shoppingCartItemQuantityElement = shoppingCartItem.querySelector(
+      '.shoppingCartItemQuantity'
+    );
+    const shoppingCartItemQuantity = Number(
+      shoppingCartItemQuantityElement.value
+    );
+    total = total + shoppingCartItemPrice * shoppingCartItemQuantity;
+  });
+  shoppingCartTotal.innerHTML = `$${total.toFixed(2)}`;
+}
+
+function removeShoppingCartItem(event) {
+  const buttonClicked = event.target;
+  buttonClicked.closest('.shoppingCartItem').remove();
+  updateShoppingCartTotal();
+}
+
+function quantityChanged(event) {
+  const input = event.target;
+  input.value <= 0 ? (input.value = 1) : null;
+  updateShoppingCartTotal();
+}
+
+//NO PUEDO HACER QUE SE CIERRE EL MODAL CON LOS BOTONES 
+function comprarButtonClicked() {
+  shoppingCartItemsContainer.innerHTML = `  <div class="modal-fade" id="comprarModal" tabindex="-1" aria-labelledby="comprarModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="comprarModalLabel">Gracias por su compra</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal-fade" aria-label="Close"></span></button>
+      </div>
+      <div class="modal-body">
+        <p>Pronto recibirá su pedido. Vuelva pronto!</p>
+      </div>
+      <div class="modal-footer">
+        <button id="deleteButton" type="button" class="btn btn-secondary" data-bs-dismiss="modal-fade">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>      
+  `;
+  updateShoppingCartTotal();
+}
+
+}
+//Filtros y eventos
+//BUSCARDOR
+const formulario = document.querySelector("#formulario");
+const botonBuscar = document.querySelector("#botonBuscar");
+
+const filtrar = () => {
+    catalogoProductos.innerHTML = " "
+    const texto = formulario.value.toLowerCase();
+    for (let producto of listaProductos) {
+        let nombre = producto.nombre.toLowerCase();
+         if(nombre.indexOf(texto) !== -1){
+            catalogoProductos.innerHTML += `
+            <section id="products">
+            <div class="container">
+              <div class="mercaderia">
+                    <div class="mercaderia-card">
+                        <div id= "item" class="card" id="imagenProducto">
+                        <img class="card-img-top" src=${producto.image} alt="Card image cap">
+                                <div class="card-body">
+                                    <p class="card-text">${producto.nombre}</p>
+                                    <p>$${producto.precio}</p>
+                                    <p>${producto.stock}</p>
+                                    <button class="item-button btn btn-primary addToCart" type="button">Agregar al Carrito</button>
+                                    <span class="fa fa-circle" id="red"></span>
+                                    <span class="fa fa-circle" id="teal"></span>
+                                    <span class="fa fa-circle" id="blue"></span>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>` 
+         }
+}
+        if(catalogoProductos.innerHTML === " "){
+            catalogoProductos.innerHTML += `<div><p>Producto no encontrado...</p></div>`
+        }
+}
+botonBuscar.addEventListener('click', filtrar)
+formulario.addEventListener('keyup', filtrar)
+
+//SIDE BAR Y SUS FILTROS
 render(listaProductos)
 let botonCaramelos = document.getElementById("botonCaramelos")
 let botonChupetines = document.getElementById("botonChupetines")
@@ -207,6 +387,8 @@ botonMas500.addEventListener("click", function(){filtrarPrecio3("botonMas500")})
 inputMaximo.addEventListener("input", function(){filtrarPrecioInput("inputMaximo")})
 inputMinimo.addEventListener("input", function(){filtrarPrecioInput("inputMinimo")})
 
+
+
 function filtrarTipo(tipo){
     let lista = listaProductos.filter((producto) => producto.tipo == tipo)
     catalogoProductos.innerHTML = ""
@@ -242,6 +424,7 @@ function filtrarPrecio3(){
     catalogoProductos.innerHTML = ""
     render(lista)
 }
+
 //  No logro hacer funcionar esta function de input
 function filtrarPrecioInput(inputMinimo, inputMaximo){
     let lista = listaProductos.filter((producto) => producto.precio > inputMinimo && producto.precio < inputMaximo)
@@ -276,9 +459,7 @@ function validarFormulario(e){
  let precioTotal = 0;
 
 
- function calculoPrecio(cantidad, precio) {
-     precioTotal += cantidad * precio;
- }
+ 
 
 
  function calculoDeStock(prod, cant) { 

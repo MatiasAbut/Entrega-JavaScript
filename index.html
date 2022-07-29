@@ -36,8 +36,8 @@
             </li>
           </ul>
           <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Buscar productos" aria-label="Search">
-            <button class="btn btn-outline-dark" type="submit">Buscar</button>
+            <input id= "formulario" class="form-control me-2" type="search" placeholder="Buscar productos" aria-label="Search">
+            <button id="botonBuscar" class="btn btn-outline-dark" type="submit">Buscar</button>
           </form>
         </div>
       </div>
@@ -184,14 +184,8 @@
           </li>
         </ul>
       </div>
-
-
-      <label>Cantidad de productos a comprar:</label>
-      <input id="cantidad" type="number"/>
-      <input type="submit" name=">" id="cantidad">
-
-      
-      <footer class="footer-section">
+  
+      <aside class="footer-section">
         <p class="">
           Copyright &copy; 2022-2022 CandyShop. All rights reserved. Designed & developed by Matias Abut.
         </p>
@@ -218,15 +212,82 @@
               Youtube
             </a>
           </li>
-      </footer>
-    </section>    
+        </aside>
+    </section> 
+    <br>   
     <section id="catalogoProductos" class="containerShop">
+   <!-- START SECTION SHOPPING CART -->
+   <section class="shopping-cart">
+    <div class="container">
+        <h3 class="text-center">CARRITO</h3>
+        <hr>
+        <div class="row">
+            <div class="col-6">
+                <div class="shopping-cart-header">
+                    <h6>Producto</h6>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="shopping-cart-header">
+                    <h6 class="text-truncate">Precio</h6>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="shopping-cart-header">
+                    <h6>Cantidad</h6>
+                </div>
+            </div>
+        </div>
+        <!-- ? START SHOPPING CART ITEMS -->
+        <div class="shopping-cart-items shoppingCartItemsContainer">
+        </div>
+        <!-- ? END SHOPPING CART ITEMS -->
 
+        <!-- START TOTAL -->
+        <div class="row">
+            <div class="col-12">
+                <div class="shopping-cart-total d-flex align-items-center">
+                    <p class="mb-0 total-space">Total</p>
+                    <p class="ml-4 mb-0 shoppingCartTotal">$ 0</p>
+                    <div class="toast ml-auto bg-info" role="alert" aria-live="assertive" aria-atomic="true"
+                        data-delay="2000">
+                        <div class="toast-header">
+                            <span>✅</span>
+                            <strong class="mr-auto ml-1 text-secondary">Elemento en el carrito</strong>
+                            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="toast-body text-white">
+                            Se aumentó correctamente la cantidad
+                        </div>
+                    </div>
+                    <button class="btn btn-success ml-auto comprarButton" type="button" data-toggle="modal"
+                        data-target="#comprarModal">Comprar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- END TOTAL -->
+      
+
+  
+    </div>
+
+</section>
+<!-- END SECTION SHOPPING CART -->
   </section>
+  
 
-  </main>
 
-  <!-- Script Bootstrap -->
+
+<!-- SCRIPTS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
   </script>
