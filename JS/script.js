@@ -149,7 +149,9 @@ function render(lista){
                         </div>
                     </div>
                 </div>
-            </div>`
+            </div>
+            </section>
+            `
          
             catalogoProductos.append(card)
     }
