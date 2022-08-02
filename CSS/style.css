@@ -41,6 +41,12 @@ body {
     float: left;
 }
 
+/* TE AGREGUE ESTO: APLICALO CORRECTAMENTE PARA QUE QUEDE BIEN */
+#catalogoProductos {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 #products {
     width: 80%;
     padding: 10px;

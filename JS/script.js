@@ -14,6 +14,7 @@
      }
  }
 
+ //recomendacion: los nombres de las carpetas en minusculas (ahora dejalo así)
  const productoA = new Producto("3-D", 220, 10, "/Multimedia/3d.jpg", "salado", "noCeliaco", "snacks")
  const productoB = new Producto("9 de oro - Agridulce", 120, 15, "Multimedia/9deoroazucarada.jpg", "dulce", "noCeliaco", "galletitas")
  const productoC = new Producto("9 de oro - Azucarada", 120, 15, '/Multimedia/9deoroagridulces.jpg', "dulce", "noCeliaco", "galletitas")
@@ -121,36 +122,35 @@
  let listaProductos = [productoA, productoB, productoC, productoD, productoE, productoF, productoG, productoH, productoI, productoJ, productoK, productoL, productoM, productoN, productoO, productoP, productoQ, productoR, productoS, productoT, productoU, productoV , productoW, productoX, productoY, productoZ, productoAA, productoAB, productoAC, productoAD, productoAE, productoAF, productoAG, productoAH, productoAI, productoAJ, productoAK, productoAL, productoAM, productoAN, productoAO, productoAP, productoAK, productoAR, productoAS, productoAT,productoAU, productoAV, productoAW, productoAX, productoAY, productoAZ, productoBA, productoBC, productoBD,productoBE, productoBF, productoBG, productoBH, productoBI, productoBJ, productoBK, productoBL, productoBM, productoBN,productoBO, productoBP, productoBK, productoBR, productoBS, productoBT, productoBU, productoBV, productoBW, productoBX,productoBY, productoBZ, productoCA, productoCB, productoCC, productoCD, productoCE, productoCF, productoCG, productoCH,productoCI, productoCJ, productoCK, productoCL, productoCM, productoCN, productoAG, productoCO, productoCP, productoCQ,productoCR, productoCS, productoCT, productoCU, productoCV, productoCW, productoCX, productoCY, productoCZ]
 
 //ME HACE UNA SOLA COLUMNA Y QUIERO QUE ALMENOS SEAN 3 PARA QUE ENTREN BIEN EN LA PAGINA
+//tenes que mapear (usar el map) para LA CARD DE PRODUCTO UNICAMENTE y el padre (CATALOGOpRODUCTOS) debe tener flex-wrap
 let catalogoProductos = document.getElementById('catalogoProductos');
 
 function render(lista){
-    for(const producto of lista){
-
+    for(const producto of lista){ //usar map
         if(producto.stock != 0){
-
             let card = document.createElement("div")
-
             card.innerHTML = `
             <section id="products">
-            <div class="container">
-              <div class="mercaderia">
-                    <div class="mercaderia-card ">
-                        <div class="card item" id="imagenProducto">
-                        <img class="card-img-top itemImage" src=${producto.image} alt="Card image cap">
-                                <div class="card-body">
-                                    <p class="card-text itemTitle">${producto.nombre}</p>
-                                    <p class="itemPrice">$${producto.precio}</p>
-                                    <p>${producto.stock}</p>
-                                    <button class="item-button btn btn-primary addToCart" type="button">Agregar al Carrito</button>
-                                    <span class="fa fa-circle" id="red"></span>
-                                    <span class="fa fa-circle" id="teal"></span>
-                                    <span class="fa fa-circle" id="blue"></span>
-                                </div>
-                        </div>
+              <div class="container">
+                <div class="mercaderia">
+                  <div class="mercaderia-card ">
+                    <div class="card item" id="imagenProducto">
+                      <img class="card-img-top itemImage" src=${producto.image} alt="Card image cap">
+                      <div class="card-body">
+                        <p class="card-text itemTitle">${producto.nombre}</p>
+                        <p class="itemPrice">$${producto.precio}</p>
+                        <p>${producto.stock}</p>
+                        <button class="item-button btn btn-primary addToCart" type="button">Agregar al Carrito</button>
+                        <span class="fa fa-circle" id="red"></span>
+                        <span class="fa fa-circle" id="teal"></span>
+                        <span class="fa fa-circle" id="blue"></span>
+                      </div>
                     </div>
+                  </div>
                 </div>
-            </div>`
-         
+              </div>`
+              //PRESTAR ATENCION A LA IDENTACION (ALINEAMIENTO DEL CODIGO)
+            //POR QUE NO SE CIERRA LA ETIQUETA SECTION???
             catalogoProductos.append(card)
     }
 
@@ -159,7 +159,8 @@ function render(lista){
 //CARRITO DE COMPRAS
 // NO PUEDO HACERLO FUNCIONAR SI APLICO LOS FILTROS.
 const addToShoppingCartButtons = document.querySelectorAll('.addToCart');
-
+//ESTO SOLAMENTE SE APLICA A LA PRIMERA RENDERIZACION DE CARDS DE PRODUCTOS... CUANDO APLICAS LOS FILTROS ESTO YA NO TIENE EFECTO
+//POR ESO ESTAS SELECCIONES+EVENTOS CONVIENE HACERLAS DIRECTAMENTE CON ONCLICK EN EL TEMPLATE STRING
 addToShoppingCartButtons.forEach((addToCartButton) => {
   addToCartButton.addEventListener('click', addToCartClicked);
 });
@@ -172,7 +173,7 @@ const shoppingCartItemsContainer = document.querySelector(
   '.shoppingCartItemsContainer'
 );
 
-function addToCartClicked(event) {
+function addToCartClicked(event) { //es más optimo guardar el id del producto y despues filtrarlo cuando renderizas el producto
   const button = event.target;
   const item = button.closest('.item');
 
@@ -302,12 +303,12 @@ function comprarButtonClicked() {
 const formulario = document.querySelector("#formulario");
 const botonBuscar = document.querySelector("#botonBuscar");
 
-const filtrar = () => {
+const filtrar = () => { //usar filter
     catalogoProductos.innerHTML = " "
     const texto = formulario.value.toLowerCase();
     for (let producto of listaProductos) {
         let nombre = producto.nombre.toLowerCase();
-         if(nombre.indexOf(texto) !== -1){
+         if(nombre.indexOf(texto) !== -1){ //la card que renderizas DEBERIA SER exactamente igual a la de arriba: USAR FUNCIONES!
             catalogoProductos.innerHTML += `
             <section id="products">
             <div class="container">
@@ -315,15 +316,15 @@ const filtrar = () => {
                     <div class="mercaderia-card">
                         <div id= "item" class="card" id="imagenProducto">
                         <img class="card-img-top" src=${producto.image} alt="Card image cap">
-                                <div class="card-body">
-                                    <p class="card-text">${producto.nombre}</p>
-                                    <p>$${producto.precio}</p>
-                                    <p>${producto.stock}</p>
-                                    <button class="item-button btn btn-primary addToCart" type="button">Agregar al Carrito</button>
-                                    <span class="fa fa-circle" id="red"></span>
-                                    <span class="fa fa-circle" id="teal"></span>
-                                    <span class="fa fa-circle" id="blue"></span>
-                                </div>
+                          <div class="card-body">
+                              <p class="card-text">${producto.nombre}</p>
+                              <p>$${producto.precio}</p>
+                              <p>${producto.stock}</p>
+                              <button class="item-button btn btn-primary addToCart" type="button">Agregar al Carrito</button>
+                              <span class="fa fa-circle" id="red"></span>
+                              <span class="fa fa-circle" id="teal"></span>
+                              <span class="fa fa-circle" id="blue"></span>
+                          </div>
                         </div>
                     </div>
                 </div>
@@ -339,8 +340,8 @@ formulario.addEventListener('keyup', filtrar)
 
 //SIDE BAR Y SUS FILTROS
 render(listaProductos)
-let botonCaramelos = document.getElementById("botonCaramelos")
-let botonChupetines = document.getElementById("botonChupetines")
+let botonCaramelos = document.getElementById("botonCaramelos") //ESTO NO ESTÁ MAL, PERO HAY FORMAS MÁS OPTIMAS DE HACERLO SIN ESCRIBIR TANTO (343 A 389)
+let botonChupetines = document.getElementById("botonChupetines") //CON ONCLICK TMB
 let botonGalletitas = document.getElementById("botonGalletitas")
 let botonChocolates = document.getElementById("botonChocolates")
 let botonGomitas = document.getElementById("botonGomitas")
@@ -388,6 +389,12 @@ inputMaximo.addEventListener("input", function(){filtrarPrecioInput("inputMaximo
 inputMinimo.addEventListener("input", function(){filtrarPrecioInput("inputMinimo")})
 
 
+//FILTRARTIPO FILTRARCATEGORIA Y FILTRARCELIACO SE PUEDE SINTETIZAR EN UNA SOLA FUNCION:
+/* function filtrar (tipoDeFiltro) {
+  let lista = listaProductos.filter((producto) => producto[tipoDeFiltro] == tipoDeFiltro)
+  catalogoProductos.innerHTML = ""
+  render(lista) //siempre es mejor retornar datos y renderizarlos luego, pero no está mal esto
+} */
 
 function filtrarTipo(tipo){
     let lista = listaProductos.filter((producto) => producto.tipo == tipo)
@@ -407,6 +414,7 @@ function filtrarCategoria(categoria){
     render(lista)
 }
 
+//el filtrado por precio se puede optimizar también con una unica función
 function filtrarPrecio(){
     let lista = listaProductos.filter((producto) => producto.precio <= 200)
     catalogoProductos.innerHTML = ""
@@ -427,17 +435,20 @@ function filtrarPrecio3(){
 
 //  No logro hacer funcionar esta function de input
 function filtrarPrecioInput(inputMinimo, inputMaximo){
+  //primero chequeamos que llegan los datos con console.log
+  //despues buscamos la forma correcta de trabajar esos datos
     let lista = listaProductos.filter((producto) => producto.precio > inputMinimo && producto.precio < inputMaximo)
     catalogoProductos.innerHTML = ""
     render(lista)
 }
 
 
-inputMinimoYMaximo.addEventListener("submit", validarFormulario);
+inputMinimoYMaximo.addEventListener("submit", validarFormulario); //por que submit???
 
 function validarFormulario(e){
     e.preventDefault();
-    filtrarPrecioInput ;
+    filtrarPrecioInput ; //por que no le pasas los parametros que requiere?
+    //estas capturando bien los datos de los inputs?
 }
 //No puedo hacer funcionar esta parte!
 //////////////////
