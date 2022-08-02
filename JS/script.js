@@ -120,7 +120,7 @@
 
  let listaProductos = [productoA, productoB, productoC, productoD, productoE, productoF, productoG, productoH, productoI, productoJ, productoK, productoL, productoM, productoN, productoO, productoP, productoQ, productoR, productoS, productoT, productoU, productoV , productoW, productoX, productoY, productoZ, productoAA, productoAB, productoAC, productoAD, productoAE, productoAF, productoAG, productoAH, productoAI, productoAJ, productoAK, productoAL, productoAM, productoAN, productoAO, productoAP, productoAK, productoAR, productoAS, productoAT,productoAU, productoAV, productoAW, productoAX, productoAY, productoAZ, productoBA, productoBC, productoBD,productoBE, productoBF, productoBG, productoBH, productoBI, productoBJ, productoBK, productoBL, productoBM, productoBN,productoBO, productoBP, productoBK, productoBR, productoBS, productoBT, productoBU, productoBV, productoBW, productoBX,productoBY, productoBZ, productoCA, productoCB, productoCC, productoCD, productoCE, productoCF, productoCG, productoCH,productoCI, productoCJ, productoCK, productoCL, productoCM, productoCN, productoAG, productoCO, productoCP, productoCQ,productoCR, productoCS, productoCT, productoCU, productoCV, productoCW, productoCX, productoCY, productoCZ]
 
-//ME HACE UNA SOLA COLUMNA Y QUIERO QUE ALMENOS SEAN 3 PARA QUE ENTREN BIEN EN LA PAGINA
+
 let catalogoProductos = document.getElementById('catalogoProductos');
 
 function render(lista){
@@ -131,6 +131,7 @@ function render(lista){
             let card = document.createElement("div")
 
             card.innerHTML = `
+          <div id="catalogoProductos">    
             <section id="products">
             <div class="container">
               <div class="mercaderia">
@@ -151,6 +152,7 @@ function render(lista){
                 </div>
             </div>
             </section>
+          </div>
             `
          
             catalogoProductos.append(card)
@@ -159,7 +161,7 @@ function render(lista){
     }
 
 //CARRITO DE COMPRAS
-// NO PUEDO HACERLO FUNCIONAR SI APLICO LOS FILTROS.
+
 const addToShoppingCartButtons = document.querySelectorAll('.addToCart');
 
 addToShoppingCartButtons.forEach((addToCartButton) => {
@@ -311,15 +313,16 @@ const filtrar = () => {
         let nombre = producto.nombre.toLowerCase();
          if(nombre.indexOf(texto) !== -1){
             catalogoProductos.innerHTML += `
+            <div id="catalogoProductos">    
             <section id="products">
             <div class="container">
               <div class="mercaderia">
-                    <div class="mercaderia-card">
-                        <div id= "item" class="card" id="imagenProducto">
-                        <img class="card-img-top" src=${producto.image} alt="Card image cap">
+                    <div class="mercaderia-card ">
+                        <div class="card item" id="imagenProducto">
+                        <img class="card-img-top itemImage" src=${producto.image} alt="Card image cap">
                                 <div class="card-body">
-                                    <p class="card-text">${producto.nombre}</p>
-                                    <p>$${producto.precio}</p>
+                                    <p class="card-text itemTitle">${producto.nombre}</p>
+                                    <p class="itemPrice">$${producto.precio}</p>
                                     <p>${producto.stock}</p>
                                     <button class="item-button btn btn-primary addToCart" type="button">Agregar al Carrito</button>
                                     <span class="fa fa-circle" id="red"></span>
@@ -329,7 +332,10 @@ const filtrar = () => {
                         </div>
                     </div>
                 </div>
-            </div>` 
+            </div>
+            </section>
+          </div>
+            ` 
          }
 }
         if(catalogoProductos.innerHTML === " "){
@@ -361,10 +367,6 @@ let botonMenos200 = document.getElementById("botonHasta200")
 let boton200a500 = document.getElementById("boton200a500")
 let botonMas500 = document.getElementById("botonMas500")
 
-// let inputMaximo = document.getElementById("inputMaximo")
-// let inputMinimo = document.getElementById("inputMinimo")
-
-let inputMinimoYMaximo = document.getElementById("inputMinimoYMaximo");
 
 botonCaramelos.addEventListener("click", function(){filtrarCategoria("caramelos")})
 botonChupetines.addEventListener("click", function(){filtrarCategoria("chupetines")})
@@ -427,36 +429,8 @@ function filtrarPrecio3(){
     render(lista)
 }
 
-//  No logro hacer funcionar esta function de input
-function filtrarPrecioInput(inputMinimo, inputMaximo){
-    let lista = listaProductos.filter((producto) => producto.precio > inputMinimo && producto.precio < inputMaximo)
-    catalogoProductos.innerHTML = ""
-    render(lista)
-}
 
 
-inputMinimoYMaximo.addEventListener("submit", validarFormulario);
-
-function validarFormulario(e){
-    e.preventDefault();
-    filtrarPrecioInput ;
-}
-//No puedo hacer funcionar esta parte!
-//////////////////
-
- let cantidad = 0;
-
- function inputHandler(e){
-     cantidad = e.target.value;
-
-     compra()
- }
- 
- let imput = document.getElementById("cantidad")
- 
- inputHandler.addEventListener("input", inputHandler)
-
- ///////////////////
 
  let precioTotal = 0;
 
