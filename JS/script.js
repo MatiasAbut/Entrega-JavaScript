@@ -161,7 +161,6 @@ function render(lista){
     }
 
 //CARRITO DE COMPRAS
-
 const addToShoppingCartButtons = document.querySelectorAll('.addToCart');
 
 addToShoppingCartButtons.forEach((addToCartButton) => {
@@ -263,7 +262,8 @@ function updateShoppingCartTotal() {
     );
     total = total + shoppingCartItemPrice * shoppingCartItemQuantity;
   });
-  shoppingCartTotal.innerHTML = `$${total.toFixed(2)}`;
+  shoppingCartTotal.innerHTML = `$${total.toFixed(2)}`
+  addLocalStorage()
 }
 
 function removeShoppingCartItem(event) {
@@ -285,13 +285,11 @@ function comprarButtonClicked() {
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="comprarModalLabel">Gracias por su compra</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal-fade" aria-label="Close"></span></button>
       </div>
       <div class="modal-body">
         <p>Pronto recibirá su pedido. Vuelva pronto!</p>
       </div>
       <div class="modal-footer">
-        <button id="deleteButton" type="button" class="btn btn-secondary" data-bs-dismiss="modal-fade">Cerrar</button>
       </div>
     </div>
   </div>
@@ -301,6 +299,20 @@ function comprarButtonClicked() {
 }
 
 }
+//LocalStorage (No funciona)
+function addLocalStorage(){
+  localStorage.setItem('carrito', JSON.stringify(carrito))
+}
+
+function loadCarrito(){
+  const storage = JSON.parse(localStorage.getItem('carrito'));
+  if(storage){
+    carrito = storage;
+    
+  }
+  
+}
+loadCarrito()
 //Filtros y eventos
 //BUSCARDOR
 const formulario = document.querySelector("#formulario");
@@ -388,8 +400,7 @@ botonMenos200.addEventListener("click", function(){filtrarPrecio("botonHasta200"
 boton200a500.addEventListener("click", function(){filtrarPrecio2("boton200a500")})
 botonMas500.addEventListener("click", function(){filtrarPrecio3("botonMas500")})
 
-inputMaximo.addEventListener("input", function(){filtrarPrecioInput("inputMaximo")})
-inputMinimo.addEventListener("input", function(){filtrarPrecioInput("inputMinimo")})
+
 
 
 
@@ -438,55 +449,55 @@ function filtrarPrecio3(){
  
 
 
- function calculoDeStock(prod, cant) { 
-     if (prod.stock >= cant) { 
-         calculoPrecio(cant, prod.precio)
-         alert("El producto total es de: $" + (cant * prod.precio))
-         alert("Selecciono " + cant + " " + prod.nombre)
-     } else {
-        alert(`No disponemos de esa cantidad en stock. Nuestro stock actual es de: ${producto.stock} unidades`)
-     }
- }
+//  function calculoDeStock(prod, cant) { 
+//      if (prod.stock >= cant) { 
+//          calculoPrecio(cant, prod.precio)
+//          alert("El producto total es de: $" + (cant * prod.precio))
+//          alert("Selecciono " + cant + " " + prod.nombre)
+//      } else {
+//         alert(`No disponemos de esa cantidad en stock. Nuestro stock actual es de: ${producto.stock} unidades`)
+//      }
+//  }
 
- for (let i = 0; i < cantidad; i++) {
-     let compra = prompt("Ingrese el nombre del producto que quiere comprar: \n" + nombresProductos.join("\n")).toLowerCase()
-     //verifico que ese producto existe comparando de la siguiente forma
-     for (let cadaProducto of listaProductos) { //para cada producto de tu lista
-         if (cadaProducto.nombre.toLowerCase() == compra) { //comparo si es igual al ingresado por el usuario y si existe
-             let cantidad = prompt("Ingrese la cantidad del producto que quiere comprar:") //recien ahi pregunto la cantidad
-             calculoDeStock(cadaProducto, cantidad) //y luego calculo stock pasando el OBJETO encontrado y la cantidad
-         }
-     }
- }
-
-
+//  for (let i = 0; i < cantidad; i++) {
+//      let compra = prompt("Ingrese el nombre del producto que quiere comprar: \n" + nombresProductos.join("\n")).toLowerCase()
+//      //verifico que ese producto existe comparando de la siguiente forma
+//      for (let cadaProducto of listaProductos) { //para cada producto de tu lista
+//          if (cadaProducto.nombre.toLowerCase() == compra) { //comparo si es igual al ingresado por el usuario y si existe
+//              let cantidad = prompt("Ingrese la cantidad del producto que quiere comprar:") //recien ahi pregunto la cantidad
+//              calculoDeStock(cadaProducto, cantidad) //y luego calculo stock pasando el OBJETO encontrado y la cantidad
+//          }
+//      }
+//  }
 
 
- function descuento(porcentaje) { //porcentaje es un numero del 0 al 100
-     precioTotal = precioTotal * (100 - porcentaje) / 100
-     alert("Recibiste un descuento del " + porcentaje + "% por tu compra")
-     alert("Gracias por su compra! Vuelva pronto!")
- }
 
 
- if (precioTotal > 0) {
-     switch (true) {
-         case precioTotal <= 200 && precioTotal >= 100:
-             descuento(5)
-             break;
-         case precioTotal <= 500 && precioTotal > 200:
-             descuento(15)
-             break;
-         case precioTotal <= 700 && precioTotal > 500:
-             descuento(25)
-             break;
-         case precioTotal > 700:
-             descuento(50)
-             break;
-         default:
-             console.log(precioTotal)
-             alert("No hay descuentos porque su compra es menor de $100")
-             alert("Gracias por su compra! Vuelva pronto!")
-             break;
-     }
- }
+//  function descuento(porcentaje) { //porcentaje es un numero del 0 al 100
+//      precioTotal = precioTotal * (100 - porcentaje) / 100
+//      alert("Recibiste un descuento del " + porcentaje + "% por tu compra")
+//      alert("Gracias por su compra! Vuelva pronto!")
+//  }
+
+
+//  if (precioTotal > 0) {
+//      switch (true) {
+//          case precioTotal <= 200 && precioTotal >= 100:
+//              descuento(5)
+//              break;
+//          case precioTotal <= 500 && precioTotal > 200:
+//              descuento(15)
+//              break;
+//          case precioTotal <= 700 && precioTotal > 500:
+//              descuento(25)
+//              break;
+//          case precioTotal > 700:
+//              descuento(50)
+//              break;
+//          default:
+//              console.log(precioTotal)
+//              alert("No hay descuentos porque su compra es menor de $100")
+//              alert("Gracias por su compra! Vuelva pronto!")
+//              break;
+//      }
+//  }
