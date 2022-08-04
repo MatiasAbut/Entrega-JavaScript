@@ -46,8 +46,11 @@ function renderCarrito() {
         shoppingCartItemsContainer.innerHTML = Content;
 
 
-        shoppingCartItemsContainer.querySelector(".delete").addEventListener('click', removeItemCarrito)
-        shoppingCartItemsContainer.querySelector(".input__elemento").addEventListener('change', sumaCantidad)
+        shoppingCartItemsContainer.querySelector(".buttonDelete").addEventListener('click', deleteCartItem)
     })
-    render(productos)
+    function deleteCartItem(){
+        localStorage.removeItem(carrito);
+        renderCarrito()
+    }
 }
+renderCarrito()
