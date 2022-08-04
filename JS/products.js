@@ -1,13 +1,6 @@
-//TE LA COMPLICASTE DEMASIADO, POR ESO NO FUNCIONA BIEN
-//TE SEPARÉ CODIGO Y TE HICE HACER ANDAR UN CARRITO EN LA CONSOLA
-//FIJATE SE RENDERIZAR ESO EN TU PROYECTO
-
-//LAS FUNCIONES QUE NO USES
-//ELIMINALAS O COMENTALAS, EN ESTE EJEMPLO: TE LAS BORRO
-//PD TE MEJORE LA IDENTACION/TABULACION DE TU CODIGO (TENELO EN CUENTA PARA LA PROXIMA!)
 
 function Producto(id,nombre, precio, stock, image, tipo, celiaco, categoria) {
-  this.id = id, //super importante el id!!! vamos a filtrar siempre por id
+  this.id = id, 
   this.nombre = nombre
   this.precio = precio
   this.stock = stock
@@ -123,4 +116,4 @@ const productoCZ = new Producto("id103", "Yummy Surtido", 45, 30,"Multimedia/yum
 
 let listaProductos = [productoA, productoB, productoC, productoD, productoE, productoF, productoG, productoH, productoI, productoJ, productoK, productoL, productoM, productoN, productoO, productoP, productoQ, productoR, productoS, productoT, productoU, productoV , productoW, productoX, productoY, productoZ, productoAA, productoAB, productoAC, productoAD, productoAE, productoAF, productoAG, productoAH, productoAI, productoAJ, productoAK, productoAL, productoAM, productoAN, productoAO, productoAP, productoAK, productoAR, productoAS, productoAT,productoAU, productoAV, productoAW, productoAX, productoAY, productoAZ, productoBA, productoBC, productoBD,productoBE, productoBF, productoBG, productoBH, productoBI, productoBJ, productoBK, productoBL, productoBM, productoBN,productoBO, productoBP, productoBK, productoBR, productoBS, productoBT, productoBU, productoBV, productoBW, productoBX,productoBY, productoBZ, productoCA, productoCB, productoCC, productoCD, productoCE, productoCF, productoCG, productoCH,productoCI, productoCJ, productoCK, productoCL, productoCM, productoCN, productoAG, productoCO, productoCP, productoCQ,productoCR, productoCS, productoCT, productoCU, productoCV, productoCW, productoCX, productoCY, productoCZ]
 
-let catalogoProductos = document.getElementById('catalogoProductos'); //a este id agregale las propiedades flex correspondientes para que quede bien organizado los productos
+let catalogoProductos = document.getElementById('catalogoProductos'); 
