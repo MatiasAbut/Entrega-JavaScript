@@ -1,8 +1,48 @@
 function render(lista) { //ESTA FUNCION ES MUY LARGA => NO ES BUENA PRACTICA => TE LA CORTÉ
-    for(const producto of lista) { //LO OPTIMO ES USAR UN FOREACH PERO DEJALO ASI, CUANDO TENGAS TIEMPO LO CAMBIAS
-      if(producto.stock != 0) { //hice un inner mas directo (sin la creacion)
-        catalogoProductos.innerHTML += `
+  for (const producto of lista) { //LO OPTIMO ES USAR UN FOREACH PERO DEJALO ASI, CUANDO TENGAS TIEMPO LO CAMBIAS
+    if (producto.stock != 0) { //hice un inner mas directo (sin la creacion)
+      catalogoProductos.innerHTML += `
           <div id="catalogoProductos">    
+            <section id="products">
+              <div class="container">
+                <div class="mercaderia">
+                  <div class="mercaderia-card ">
+                    <div class="card item" id="imagenProducto">
+                      <img class="card-img-top itemImage" src=${producto.image} alt="Card image cap">
+                      <div class="card-body">
+                        <p class="card-text itemTitle">${producto.nombre}</p>
+                        <p class="itemPrice">$${producto.precio}</p>
+                        <p>${producto.stock}</p>
+                        <button class="item-button btn btn-primary addToCart button" onClick="addToCartClicked('${producto.id}')">Agregar al Carrito</button>
+                        <span class="fa fa-circle" id="red"></span>
+                        <span class="fa fa-circle" id="teal"></span>
+                        <span class="fa fa-circle" id="blue"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>`
+    }
+  }
+}
+
+render(listaProductos)
+
+//Filtros y eventos
+//BUSCARDOR
+const formulario = document.querySelector("#formulario");
+const botonBuscar = document.querySelector("#botonBuscar");
+
+const filtrar = () => {
+  catalogoProductos.innerHTML = " "
+  const texto = formulario.value.toLowerCase();
+  for (let producto of listaProductos) {
+    let nombre = producto.nombre.toLowerCase();
+    if (nombre.indexOf(texto) !== -1) {
+      catalogoProductos.innerHTML += `
+            <div id="catalogoProductos">    
             <section id="products">
               <div class="container">
                 <div class="mercaderia">
@@ -23,53 +63,13 @@ function render(lista) { //ESTA FUNCION ES MUY LARGA => NO ES BUENA PRACTICA => 
                 </div>
               </div>
             </section>
-          </div>`
-      }
+          </div>
+            `
     }
   }
-  
-  render(listaProductos)
-
-  //Filtros y eventos
-//BUSCARDOR
-const formulario = document.querySelector("#formulario");
-const botonBuscar = document.querySelector("#botonBuscar");
-
-const filtrar = () => {
-    catalogoProductos.innerHTML = " "
-    const texto = formulario.value.toLowerCase();
-    for (let producto of listaProductos) {
-        let nombre = producto.nombre.toLowerCase();
-         if(nombre.indexOf(texto) !== -1){
-            catalogoProductos.innerHTML += `
-            <div id="catalogoProductos">    
-            <section id="products">
-            <div class="container">
-              <div class="mercaderia">
-                    <div class="mercaderia-card ">
-                        <div class="card item" id="imagenProducto">
-                        <img class="card-img-top itemImage" src=${producto.image} alt="Card image cap">
-                                <div class="card-body">
-                                    <p class="card-text itemTitle">${producto.nombre}</p>
-                                    <p class="itemPrice">$${producto.precio}</p>
-                                    <p>${producto.stock}</p>
-                                    <button class="item-button btn btn-primary addToCart" type="button">Agregar al Carrito</button>
-                                    <span class="fa fa-circle" id="red"></span>
-                                    <span class="fa fa-circle" id="teal"></span>
-                                    <span class="fa fa-circle" id="blue"></span>
-                                </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </section>
-          </div>
-            ` 
-         }
-}
-        if(catalogoProductos.innerHTML === " "){
-            catalogoProductos.innerHTML += `<div><p>Producto no encontrado...</p></div>`
-        }
+  if (catalogoProductos.innerHTML === " ") {
+    catalogoProductos.innerHTML += `<div><p>Producto no encontrado...</p></div>`
+  }
 }
 botonBuscar.addEventListener('click', filtrar)
 formulario.addEventListener('keyup', filtrar)
@@ -97,67 +97,101 @@ let boton200a500 = document.getElementById("boton200a500")
 let botonMas500 = document.getElementById("botonMas500")
 
 
-botonCaramelos.addEventListener("click", function(){filtrarCategoria("caramelos")})
-botonChupetines.addEventListener("click", function(){filtrarCategoria("chupetines")})
-botonGalletitas.addEventListener("click", function(){filtrarCategoria("galletitas")})
-botonChocolates.addEventListener("click", function(){filtrarCategoria("chocolates")})
-botonGomitas.addEventListener("click", function(){filtrarCategoria("gomitas")})
-botonBombon.addEventListener("click", function(){filtrarCategoria("bombones")})
-botonSnacks.addEventListener("click", function(){filtrarCategoria("snacks")})
-botonAlfajores.addEventListener("click", function(){filtrarCategoria("alfajores")})
-botonBarritas.addEventListener("click", function(){filtrarCategoria("barritas")})
-botonChicles.addEventListener("click", function(){filtrarCategoria("chicles")})
+botonCaramelos.addEventListener("click", function () {
+  filtrarCategoria("caramelos")
+})
+botonChupetines.addEventListener("click", function () {
+  filtrarCategoria("chupetines")
+})
+botonGalletitas.addEventListener("click", function () {
+  filtrarCategoria("galletitas")
+})
+botonChocolates.addEventListener("click", function () {
+  filtrarCategoria("chocolates")
+})
+botonGomitas.addEventListener("click", function () {
+  filtrarCategoria("gomitas")
+})
+botonBombon.addEventListener("click", function () {
+  filtrarCategoria("bombones")
+})
+botonSnacks.addEventListener("click", function () {
+  filtrarCategoria("snacks")
+})
+botonAlfajores.addEventListener("click", function () {
+  filtrarCategoria("alfajores")
+})
+botonBarritas.addEventListener("click", function () {
+  filtrarCategoria("barritas")
+})
+botonChicles.addEventListener("click", function () {
+  filtrarCategoria("chicles")
+})
 
-botonDulce.addEventListener("click", function(){filtrarTipo("dulce")})
-botonSalado.addEventListener("click", function(){filtrarTipo("salado")})
-botonDietetico.addEventListener("click", function(){filtrarTipo("dietetico")})
-botonCeliaco.addEventListener("click", function(){filtrarCeliaco("celiaco")})
+botonDulce.addEventListener("click", function () {
+  filtrarTipo("dulce")
+})
+botonSalado.addEventListener("click", function () {
+  filtrarTipo("salado")
+})
+botonDietetico.addEventListener("click", function () {
+  filtrarTipo("dietetico")
+})
+botonCeliaco.addEventListener("click", function () {
+  filtrarCeliaco("celiaco")
+})
 
-botonMenos200.addEventListener("click", function(){filtrarPrecio("botonHasta200")})
-boton200a500.addEventListener("click", function(){filtrarPrecio2("boton200a500")})
-botonMas500.addEventListener("click", function(){filtrarPrecio3("botonMas500")})
+botonMenos200.addEventListener("click", function () {
+  filtrarPrecio("botonHasta200")
+})
+boton200a500.addEventListener("click", function () {
+  filtrarPrecio2("boton200a500")
+})
+botonMas500.addEventListener("click", function () {
+  filtrarPrecio3("botonMas500")
+})
 
 
 
 
 
-function filtrarTipo(tipo){
-    let lista = listaProductos.filter((producto) => producto.tipo == tipo)
-    catalogoProductos.innerHTML = ""
-    render(lista)
+function filtrarTipo(tipo) {
+  let lista = listaProductos.filter((producto) => producto.tipo == tipo)
+  catalogoProductos.innerHTML = ""
+  render(lista)
 }
 
-function filtrarCeliaco(celiaco){
-    let lista = listaProductos.filter((producto) => producto.celiaco == celiaco)
-    catalogoProductos.innerHTML = ""
-    render(lista)
+function filtrarCeliaco(celiaco) {
+  let lista = listaProductos.filter((producto) => producto.celiaco == celiaco)
+  catalogoProductos.innerHTML = ""
+  render(lista)
 }
 
-function filtrarCategoria(categoria){
-    let lista = listaProductos.filter((producto) => producto.categoria == categoria)
-    catalogoProductos.innerHTML = ""
-    render(lista)
+function filtrarCategoria(categoria) {
+  let lista = listaProductos.filter((producto) => producto.categoria == categoria)
+  catalogoProductos.innerHTML = ""
+  render(lista)
 }
 
-function filtrarPrecio(){
-    let lista = listaProductos.filter((producto) => producto.precio <= 200)
-    catalogoProductos.innerHTML = ""
-    render(lista)
+function filtrarPrecio() {
+  let lista = listaProductos.filter((producto) => producto.precio <= 200)
+  catalogoProductos.innerHTML = ""
+  render(lista)
 }
 
-function filtrarPrecio2(){
-    let lista = listaProductos.filter((producto) => producto.precio > 200 && producto.precio < 500)
-    catalogoProductos.innerHTML = ""
-    render(lista)
+function filtrarPrecio2() {
+  let lista = listaProductos.filter((producto) => producto.precio > 200 && producto.precio < 500)
+  catalogoProductos.innerHTML = ""
+  render(lista)
 }
 
-function filtrarPrecio3(){
-    let lista = listaProductos.filter((producto) => producto.precio >= 500)
-    catalogoProductos.innerHTML = ""
-    render(lista)
+function filtrarPrecio3() {
+  let lista = listaProductos.filter((producto) => producto.precio >= 500)
+  catalogoProductos.innerHTML = ""
+  render(lista)
 }
 
 
 
 
- let precioTotal = 0;
+let precioTotal = 0;
