@@ -34,6 +34,8 @@ function htmlCarrito(products) {
         </div>
     `)).join('h')
 }
-console.log(htmlCarrito(carrito))
 
-document.getElementById('shoppingCartItemsContainer').innerHTML = htmlCarrito(carrito)
+let impresion = htmlCarrito(carrito)
+console.log(impresion)
+
+document.getElementById('shoppingCartItemsContainer').innerHTML = impresion
