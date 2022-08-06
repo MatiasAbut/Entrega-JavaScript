@@ -32,7 +32,7 @@ function htmlCarrito(products) {
                 </div>
             </div>
         </div>
-    `)).join('h')
+    `)).join('')
 }
 
 let impresion = htmlCarrito(carrito)
