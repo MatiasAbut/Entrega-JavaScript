@@ -22,8 +22,12 @@ function addToCartClicked(id) {
   return productos //ESTE DATO ES EL QUE LUEGO TENDRIA QUE RENDERIZAR (HACELO EN CARRITO PORFA)
   //addItemToShoppingCart(producto.nombre, producto.precio, producto.image)
   //lo mismo esta funcion... ver donde renderizas
+  
 }
 
 function mostrarCarrito() {
   render(productos)
 }
+
+/////////////////////
+
