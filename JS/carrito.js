@@ -45,7 +45,7 @@ document
 .querySelector('.shoppingCartItemQuantity')
 .addEventListener('change', quantityChanged);
 
-updateShoppingCartTotal()
+updateShoppingCartTotal()//este me actualiza el total de el carrito
 
 
 function updateShoppingCartTotal() {
@@ -84,7 +84,7 @@ function updateShoppingCartTotal() {
     
   }
   
-  function quantityChanged(event) {
+  function quantityChanged(event) {//este me cambia la cantidad de el producto, esta funcion, anda perfecto, el tema es que solo funciona en el primer producto de la lista y no en los demas.
     const input = event.target;
     input.value <= 0 ? (input.value = 1) : null;
     updateShoppingCartTotal();
