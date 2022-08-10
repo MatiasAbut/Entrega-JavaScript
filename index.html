@@ -29,13 +29,13 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+              <a class="nav-link active itemsNavBar" aria-current="page" href="index.html">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contacto.html">Contacto</a>
+              <a class="nav-link itemsNavBar" href="contacto.html">Contacto</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="carrito.html">Carrito</a>
+              <a class="nav-link itemsNavBar" href="carrito.html">Carrito</a>
             </li>
           </ul>
           <form class="d-flex" role="search">
@@ -57,42 +57,36 @@
       <div>
         <h6 class="p-1 border-bottom">Productos</h6>
         <ul>
-          <li><a href="#">Caramelos</a></li>
-          <li><a href="#">Chupetines</a></li>
-          <li><a href="#">Galletitas</a></li>
-          <li><a href="#">Chocolates</a></li>
-          <li><a href="#">Gomitas</a></li>
-          <li><a href="#">Bombon</a></li>
-          <li><a href="#">Snacks</a></li>
-          <li><a href="#">Alfajores</a></li>
-          <li><a href="#">Barrita</a></li>
-          <li><a href="#">Chicles</a></li>
+          <li><a id="botonCaramelos" class="botonSideBar" href="#">Caramelos</a></li>
+          <li><a id="botonChupetines" class="botonSideBar" href="#">Chupetines</a></li>
+          <li><a id="botonGalletitas" class="botonSideBar" href="#">Galletitas</a></li>
+          <li><a id="botonChocolates" class="botonSideBar" href="#">Chocolates</a></li>
+          <li><a id="botonGomitas" class="botonSideBar" href="#">Gomitas</a></li>
+          <li><a id="botonBombon" class="botonSideBar" href="#">Bombon</a></li>
+          <li><a id="botonSnacks" class="botonSideBar" href="#">Snacks</a></li>
+          <li><a id="botonAlfajores" class="botonSideBar" href="#">Alfajores</a></li>
+          <li><a id="botonBarritas" class="botonSideBar" href="#">Barrita</a></li>
+          <li><a id="botonChicles" class="botonSideBar" href="#">Chicles</a></li>
         </ul>
       </div>
       <div>
         <h6 class="p-1 border-bottom">Filtro</h6>
         <p class="mb-2">Tipos</p>
         <ul class="list-group">
-          <li class="list-group-item list-group-item-action mb-2 rounded">
-            <a href="#">
-              <span class="fa fa-circle pr-1" id="red"></span>Dulce
-            </a>
-          </li>
-          <li class="list-group-item list-group-item-action mb-2 rounded">
-            <a href="#">
-              <span class="fa fa-circle pr-1" id="teal"></span>Salado
-            </a>
-          </li>
-          <li class="list-group-item list-group-item-action mb-2 rounded">
-            <a href="#">
-              <span class="fa fa-circle pr-1" id="blue"></span>Dietetico
-            </a>
-          </li>
-          <li class="list-group-item list-group-item-action mb-2 rounded">
-            <a href="#">
-              <span class="fa fa-circle pr-1" id="red"></span>Celiacos
-            </a>
-          </li>
+          <li id="botonDulce" class="list-group-item list-group-item-action mb-2 rounded"><a id="botonDulce" href="#">
+            <span class="fa fa-circle pr-1" id="red"></span>Dulce
+          </a></li>
+        <li id="botonSalado" class="list-group-item list-group-item-action mb-2 rounded"><a id="botonSalado" href="#">
+            <span class="fa fa-circle pr-1" id="teal"></span>Salado
+          </a></li>
+        <li id="botonDietetico" class="list-group-item list-group-item-action mb-2 rounded"><a id="botonDietetico"
+            href="#">
+            <span class="fa fa-circle pr-1" id="blue"></span>Dietetico
+          </a></li>
+        <li id="botonCeliaco" class="list-group-item list-group-item-action mb-2 rounded"><a id="botonCeliaco"
+            href="#">
+            <span class="fa fa-circle pr-1" id="red"></span>Celiacos
+          </a></li>
         </ul>
       </div>
       <div>
@@ -103,34 +97,34 @@
     <section id="sidebar">
       <div>
         <h6 class="p-1 border-bottom">Productos</h6>
-        <ul>
-          <li><a id="botonCaramelos" href="#">Caramelos</a></li>
-          <li><a id="botonChupetines" href="#">Chupetines</a></li>
-          <li><a id="botonGalletitas" href="#">Galletitas</a></li>
-          <li><a id="botonChocolates" href="#">Chocolates</a></li>
-          <li><a id="botonGomitas" href="#">Gomitas</a></li>
-          <li><a id="botonBombon" href="#">Bombon</a></li>
-          <li><a id="botonSnacks" href="#">Snacks</a></li>
-          <li><a id="botonAlfajores" href="#">Alfajores</a></li>
-          <li><a id="botonBarritas" href="#">Barrita</a></li>
-          <li><a id="botonChicles" href="#">Chicles</a></li>
+        <ul class="buttonsSidebar">
+          <li class="itemsListaSide"><a id="botonCaramelos" class="botonSideBar color-1" href="#">Caramelos</a></li>
+          <li class="itemsListaSide"><a id="botonChupetines" class="botonSideBar color-2" href="#">Chupetines</a></li>
+          <li class="itemsListaSide"><a id="botonGalletitas" class="botonSideBar color-3" href="#">Galletitas</a></li>
+          <li class="itemsListaSide"><a id="botonChocolates" class="botonSideBar color-4" href="#">Chocolates</a></li>
+          <li class="itemsListaSide"><a id="botonGomitas" class="botonSideBar color-5" href="#">Gomitas</a></li>
+          <li class="itemsListaSide"><a id="botonBombon" class="botonSideBar color-6" href="#">Bombon</a></li>
+          <li class="itemsListaSide"><a id="botonSnacks" class="botonSideBar color-7" href="#">Snacks</a></li>
+          <li class="itemsListaSide"><a id="botonAlfajores" class="botonSideBar color-8" href="#">Alfajores</a></li>
+          <li class="itemsListaSide"><a id="botonBarritas" class="botonSideBar color-9" href="#">Barrita</a></li>
+          <li class="itemsListaSide"><a id="botonChicles" class="botonSideBar color-10" href="#">Chicles</a></li>
         </ul>
       </div>
       <div>
         <h6 class="p-1 border-bottom">Filtro</h6>
         <p class="mb-2">Tipos</p>
-        <ul class="list-group">
-          <li id="botonDulce" class="list-group-item list-group-item-action mb-2 rounded"><a id="botonDulce" href="#">
+        <ul class="list-group botonesTipos">
+          <li id="botonDulce" class="list-group-item list-group-item-action mb-2 rounded botonDulce1"><a id="botonDulce" href="#">
               <span class="fa fa-circle pr-1" id="red"></span>Dulce
             </a></li>
-          <li id="botonSalado" class="list-group-item list-group-item-action mb-2 rounded"><a id="botonSalado" href="#">
+          <li id="botonSalado" class="list-group-item list-group-item-action mb-2 rounded botonSalado1"><a id="botonSalado" href="#">
               <span class="fa fa-circle pr-1" id="teal"></span>Salado
             </a></li>
-          <li id="botonDietetico" class="list-group-item list-group-item-action mb-2 rounded"><a id="botonDietetico"
+          <li id="botonDietetico" class="list-group-item list-group-item-action mb-2 rounded botonDietetico1"><a id="botonDietetico"
               href="#">
               <span class="fa fa-circle pr-1" id="blue"></span>Dietetico
             </a></li>
-          <li id="botonCeliaco" class="list-group-item list-group-item-action mb-2 rounded"><a id="botonCeliaco"
+          <li id="botonCeliaco" class="list-group-item list-group-item-action mb-2 rounded botonCeliaco1"><a id="botonCeliaco"
               href="#">
               <span class="fa fa-circle pr-1" id="red"></span>Celiacos
             </a></li>
