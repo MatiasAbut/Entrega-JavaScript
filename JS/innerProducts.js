@@ -1,6 +1,6 @@
-function render(lista) { //ESTA FUNCION ES MUY LARGA => NO ES BUENA PRACTICA => TE LA CORTÉ
-  for (const producto of lista) { //LO OPTIMO ES USAR UN FOREACH PERO DEJALO ASI, CUANDO TENGAS TIEMPO LO CAMBIAS
-    if (producto.stock != 0) { //hice un inner mas directo (sin la creacion)
+function render(lista) { 
+  for (const producto of lista) { 
+    (producto.stock != 0) && ( 
       catalogoProductos.innerHTML += `
           <div id="catalogoProductos">    
             <section id="products">
@@ -24,7 +24,7 @@ function render(lista) { //ESTA FUNCION ES MUY LARGA => NO ES BUENA PRACTICA => 
               </div>
             </section>
           </div>`
-    }
+    )
   }
 }
 
@@ -40,7 +40,7 @@ const filtrar = () => {
   const texto = formulario.value.toLowerCase();
   for (let producto of listaProductos) {
     let nombre = producto.nombre.toLowerCase();
-    if (nombre.indexOf(texto) !== -1) {
+    (nombre.indexOf(texto) !== -1) && (
       catalogoProductos.innerHTML += `
             <div id="catalogoProductos">    
             <section id="products">
@@ -65,11 +65,9 @@ const filtrar = () => {
             </section>
           </div>
             `
-    }
+    )
   }
-  if (catalogoProductos.innerHTML === " ") {
-    catalogoProductos.innerHTML += `<div><p>Producto no encontrado...</p></div>`
-  }
+  (catalogoProductos.innerHTML === " ") && (catalogoProductos.innerHTML += `<div><p>Producto no encontrado...</p></div>`)
 }
 botonBuscar.addEventListener('click', filtrar)
 formulario.addEventListener('keyup', filtrar)

@@ -402,3 +402,10 @@ label {
 .comprarButton {
     margin-left: 10px;
 }
+
+.compraLista{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 1rem;
+}

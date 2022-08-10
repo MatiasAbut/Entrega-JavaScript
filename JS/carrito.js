@@ -1,13 +1,14 @@
 function showProducts() {
     let ids = []
-    if (localStorage.getItem('carrito')) { //si existe el carrito en el almacenamiento
-        ids = JSON.parse(localStorage.getItem('carrito')) //cargo los ids
+    if (localStorage.getItem('carrito')) { 
+        ids = JSON.parse(localStorage.getItem('carrito')) 
     }
-    return ids.map(id => listaProductos.find(e => e.id === id)) //defino los productos
+    let productos = ids.map(id => listaProductos.find(e => e.id === id)) 
+    productos.forEach(e => e.quantity = 1) 
+    return productos
 }
 
-let carrito = showProducts() //cargo los productos
-console.log(carrito)
+let carrito = showProducts() 
 
 function htmlCarrito(products) {
     return products.map(prod => (`
@@ -26,8 +27,7 @@ function htmlCarrito(products) {
             <div class="col-4">
                 <div
                     class="shopping-cart-quantity d-flex justify-content-between align-items-center h-100 border-bottom pb-2 pt-3">
-                    <input class="shopping-cart-quantity-input shoppingCartItemQuantity" type="number"
-                        value="1">
+                    <input class="shopping-cart-quantity-input shoppingCartItemQuantity${prod.id}" min="1" max=${prod.stock} onchange="changeQuantity('${prod.id}')" type="number" value="1">
                     <button class="btn btn-danger buttonDelete" type="button" onclick="removeShoppingCartItem('${prod.id}')">X</button>
                 </div>
             </div>
@@ -36,63 +36,49 @@ function htmlCarrito(products) {
 }
 
 let impresion = htmlCarrito(carrito)
-console.log(impresion)
+document.getElementById('shoppingCartItemsContainer').innerHTML = impresion
+updateShoppingCartTotal(carrito) 
 
-document
-  .getElementById('shoppingCartItemsContainer').innerHTML = impresion
-
-document
-.querySelector('.shoppingCartItemQuantity')
-.addEventListener('change', quantityChanged);
-
-updateShoppingCartTotal()//este me actualiza el total de el carrito
-
-
-function updateShoppingCartTotal() {
-    let total = 0;
-    const shoppingCartTotal = document.querySelector('.shoppingCartTotal');
-  
-    const shoppingCartItems = document.querySelectorAll('.shoppingCartItem');
-  
-    shoppingCartItems.forEach((shoppingCartItem) => {
-      const shoppingCartItemPriceElement = shoppingCartItem.querySelector(
-        '.shoppingCartItemPrice'
-      );
-      const shoppingCartItemPrice = Number(
-        shoppingCartItemPriceElement.textContent.replace('$', '')
-      );
-      const shoppingCartItemQuantityElement = shoppingCartItem.querySelector(
-        '.shoppingCartItemQuantity'
-      );
-      const shoppingCartItemQuantity = Number(
-        shoppingCartItemQuantityElement.value
-      );
-      total = total + shoppingCartItemPrice * shoppingCartItemQuantity;
-    });
-    shoppingCartTotal.innerHTML = `$${total.toFixed(2)}`;
-  }
-
-
-
-  function removeShoppingCartItem(id) {
+function removeShoppingCartItem(id) {
     carrito = carrito.filter(e => e.id !== id)
-    console.log(carrito)
+    let ids = carrito.map(e => e.id) 
+    localStorage.setItem('carrito', JSON.stringify(ids)) 
+    document.getElementById(`show${id}`).innerHTML = "" 
+    updateShoppingCartTotal(carrito) 
+}
+
+function changeQuantity(id) {
+    let quantity = document.querySelector(`.shoppingCartItemQuantity${id}`).value
+    carrito.find(e => e.id == id).quantity = Number(quantity)
+    updateShoppingCartTotal(carrito) 
+}
+
+function updateShoppingCartTotal(productos) {
+    let total = 0
+    productos.forEach(e => total += e.quantity * e.precio)
+    console.log(total)
+    document.querySelector('.shoppingCartTotal').innerHTML = `$${total.toFixed(2)}`;
+}
+
+
+
+function comprarButtonClicked(carrito, id) {
+    carrito = carrito.filter(e => e.id !== id)
     let ids = carrito.map(e => e.id)
-    localStorage.setItem('carrito', JSON.stringify(ids)) //vuelvo a guardar en el storage el carrito, sino no se borra nunca del storage
-    console.log(document.getElementById(`show${id}`))
-    document.getElementById(`show${id}`).innerHTML = ""
-    
-  }
-  
-  function quantityChanged(event) {//este me cambia la cantidad de el producto, esta funcion, anda perfecto, el tema es que solo funciona en el primer producto de la lista y no en los demas.
-    const input = event.target;
-    input.value <= 0 ? (input.value = 1) : null;
-    updateShoppingCartTotal();
-  }
-
-  function comprarButtonClicked() {
-    shoppingCartItemsContainer.innerHTML = '';
-    updateShoppingCartTotal();
-  }
-
-  
+    localStorage.clear('carrito', JSON.stringify(ids))
+    document.querySelector('#shoppingCartItemsContainer').innerHTML = ""
+    document.querySelector(`#finalCompra`).innerHTML = `
+    <div class="dialog dialog-centered">
+    <div class="compraLista">
+        <div>
+            <h2 class="title">Gracias por su compra</h2>
+        </div>
+        <div>
+            <p>Pronto recibirá su pedido!</p>
+        </div>
+        <div>
+        </div>
+    </div>
+</div>`
+    updateShoppingCartTotal(carrito)
+}
