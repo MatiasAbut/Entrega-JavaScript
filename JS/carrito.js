@@ -61,24 +61,44 @@ function updateShoppingCartTotal(productos) {
 }
 
 
-
 function comprarButtonClicked(carrito, id) {
     carrito = carrito.filter(e => e.id !== id)
     let ids = carrito.map(e => e.id)
     localStorage.clear('carrito', JSON.stringify(ids))
     document.querySelector('#shoppingCartItemsContainer').innerHTML = ""
-    document.querySelector(`#finalCompra`).innerHTML = `
-    <div class="dialog dialog-centered">
-    <div class="compraLista">
-        <div>
-            <h2 class="title">Gracias por su compra</h2>
-        </div>
-        <div>
-            <p>Pronto recibirá su pedido!</p>
-        </div>
-        <div>
-        </div>
-    </div>
-</div>`
+
+Swal.fire({
+    title: 'Confirma la compra?',
+    showDenyButton: true,
+    showCancelButton: true,
+    confirmButtonText: 'Si',
+    denyButtonText: `No`,
+  }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+      Swal.fire('Gracias por su compra!', '', 'success')
+      document.querySelector(`#finalCompra`).innerHTML = `
+      <div class="dialog dialog-centered">
+      <div class="compraLista">
+          <div>
+              <h2 class="title">Gracias por su compra</h2>
+          </div>
+          <div>
+              <p>Pronto recibirá su pedido!</p>
+          </div>
+          <div>
+          </div>
+      </div>
+  </div>`
+    } else if (result.isDenied) {
+      Swal.fire('Se ha eliminado su pedido', '', 'info')
+    }
+  })
     updateShoppingCartTotal(carrito)
 }
+
+
+
+
+
+
