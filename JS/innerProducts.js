@@ -194,14 +194,13 @@ let precioTotal = 0;
 
 //////////////////////
 
-fetch("data.json")
+fetch("../data.json")
 .then((response) => response.json())
 .catch((error) => console.log(error))
-.then((data) =>
+.then((lista) => 
 {
-  for(const producto of data){
-    listaProductos.push(new Producto(producto.id,producto.nombre, producto.precio, producto.stock, producto.image, producto.tipo, producto.celiaco, producto.categoria))
-  }
-  render(lista)
-  }
-)
+for(const producto of lista){
+  listaProductos.push(new Producto(producto.id,producto.nombre, producto.precio, producto.stock, producto.image, producto.tipo, producto.celiaco, producto.categoria))
+}
+render(lista)
+})
