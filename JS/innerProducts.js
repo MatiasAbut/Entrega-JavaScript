@@ -190,6 +190,18 @@ function filtrarPrecio3() {
 }
 
 
-
-
 let precioTotal = 0;
+
+//////////////////////
+
+fetch("data.json")
+.then((response) => response.json())
+.catch((error) => console.log(error))
+.then((data) =>
+{
+  for(const producto of data){
+    listaProductos.push(new Producto(producto.id,producto.nombre, producto.precio, producto.stock, producto.image, producto.tipo, producto.celiaco, producto.categoria))
+  }
+  render(lista)
+  }
+)
